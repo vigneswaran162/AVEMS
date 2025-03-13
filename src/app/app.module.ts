@@ -26,6 +26,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatIconModule} from '@angular/material/icon';
 import { SideNavLinkComponent } from './Admin/side-nav-link/side-nav-link.component';
+import { FooterComponent } from './Content/footer/footer.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { SideNavLinkComponent } from './Admin/side-nav-link/side-nav-link.compon
     HomeComponent,
     EventDetailsComponent,
     RegisterationListComponent,
-    SideNavLinkComponent
+    SideNavLinkComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
