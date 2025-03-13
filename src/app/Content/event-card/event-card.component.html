@@ -1,0 +1,23 @@
+<app-navbar></app-navbar>
+<div class="container-fluid">
+    <div class="row px-5 mt-4">
+        <div class="card-box"  *ngFor="let row of EventDetails">
+          <div class="img-box">
+            <span class="type mx-2">{{row.EventType}}</span>
+            <img [src]="row.EventThumbnailImage" alt="">
+          </div>
+          <div class="card-content">
+            <div class="box mb-1">
+              <h5 class="mt-2">{{row.EventTitle}}</h5>
+              <span class="date">{{row.EventDate | date: 'dd/MM/yyyy'}}</span>
+            </div>
+            <p>
+                {{row.EventSummary}}
+            </p>
+            <button (click)="EventDetail(row)">Register Now</button>
+          </div>
+        </div>
+      
+    </div>
+</div>
+

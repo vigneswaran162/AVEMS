@@ -1,0 +1,22 @@
+
+<mat-toolbar style="background-color: #9b59b6;color: #ffff;" class="px-3 mat-elevation-z3">
+    <mat-icon (click)="collapsed.set(!collapsed())">menu</mat-icon> 
+</mat-toolbar>
+<mat-sidenav-container>
+    <mat-sidenav  mode="side" [style.width]="sidenavWidth()" opened  >
+    <app-side-nav-link></app-side-nav-link>
+
+    </mat-sidenav>
+    <mat-sidenav-content class="content" [style.margin-left]="sidenavWidth()">
+     <div class="row p-5 gap-5">
+           
+        <div class="col-md-3 d-flex shadow  p-4 box" style="border-radius: 10px;cursor: pointer;"  *ngFor="let row of dataList;">
+              <img src="" alt="" style="width: 60px;">
+            <div class="text-content">
+                <h4>{{row.EventTitle}}</h4>
+                <span>{{row.EventType}}</span> <span>{{row.EventDate}}</span>
+            </div>
+        </div>
+     </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

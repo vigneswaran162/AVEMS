@@ -1,0 +1,107 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 mt-3">
+            <img [src]="EventDetail.EventMainImage" alt="">
+        </div>
+        <div class="col-md-10 ">
+           <div class="row">
+
+            <div class="col-md-6 mt-4">
+                <h2>{{EventDetail.EventTitle}}</h2>
+                <h4><img src="../assets/icons8-calendar-96.png" class="img-fluid" alt=""> {{EventDetail.EventDate}} <img src="../assets/icons8-time-100.png" class="img-fluid" alt=""> {{EventDetail.StartTime}} - {{EventDetail.EndTime}} </h4>
+            </div>
+            <div class="col-md-6">
+                <h2><img src="../assets/icons8-location-100.png" class="img-fluid" alt=""> {{EventDetail.EventPlace}}</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <button data-bs-toggle="modal" class="button" data-bs-target="#staticBackdrop" (click)="GetRegisterationID()">Register</button> 
+                    </div>
+                    <div class="col-md-6">
+
+                    </div>
+                </div>
+                <!-- <h4><span>NUMBER OF PERSON ALLOWED:</span> {{EventDetail.PersonAllowed}} <span>ALREADY APPLIED:</span> 0</h4> -->
+            </div>
+            <div class="col-md-12">
+                <h2>Event Description</h2>
+                <p class="EventDetails">
+                    {{EventDetail.EventDetails}}
+                </p>
+            </div>
+            <div class="col-md-12">
+                <h2>Rules & Instruction</h2>
+
+                
+         
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="staticBackdropLabel">REGISTER FORM</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <div class="form">
+            <div class="form-group">
+              <label >Roll No</label>
+              <input type="text" class="form-control" [(ngModel)]="model.RollNo"  >
+            </div>
+            <div class="form-group">
+              <label >Full Name</label>
+              <input type="text" class="form-control" [(ngModel)]="model.FullNmae" >
+            </div>
+            <div class="form-group">
+              <label >DOB</label>
+              <input type="date" class="form-control" [(ngModel)]="model.DOB"   [max]="this.model.DOB">
+            </div>
+            <div class="form-group">
+              <label >Email address</label>
+              <input type="email" class="form-control" [(ngModel)]="model.EmailAddress" (blur)="onblurEmailAddress($event)"  pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" >
+            </div>
+            <div class="form-group">
+              <label >Phone No</label>
+              <input type="text" pattern="[0-9]*" minlength="10" maxlength="10" class="form-control" [(ngModel)]="model.PhoneNo" (blur)="OnBlurPhoneNo($event)"  >
+            </div>
+            <div class="form-group">
+              <label >College Name</label>
+              <input type="text" class="form-control" [(ngModel)]="model.CollegeName" >
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlSelect1"> select Department</label>
+              <select class="form-control"  [(ngModel)]="model.Department" id="exampleFormControlSelect1">
+                <option value="CSE">CSE</option>
+                <option value="ECE">ECE</option>
+                <option value="MECH">MECH</option>
+                <option value="EEE">EEE</option>
+                <option value="AUTO">AUTO</option>
+              </select>
+            </div>
+          </div>
+         
+        <div class="modal-footer d-flex">
+         
+           
+              <button class="button-1" >Clear</button>
+           
+          
+              <button class="button-2" (click)="onSubmit()">Submit</button>
+           
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+

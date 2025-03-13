@@ -1,0 +1,121 @@
+<nav class="navbar navbar-dark py-1 px-5">
+    <div class="container-fluid">
+      <span class="navbar-brand mb-0 h1">Admin DashBoard</span>
+      <button type="button" class="btn btn-secondary" (click)="openDialog()">Event List</button>
+    </div>
+  </nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2">
+      <app-sidenavbar></app-sidenavbar>
+        </div>
+        <div class="col-md-10 mt-4">
+           <div class="row px-5 py-3">
+            <div class="col-md-3 mb-3">
+                <label class="form-label">Event No.</label>
+                <input type="email" [readonly]="isUpdate" class="form-control"  [(ngModel)]="model.EventNo" >
+            </div>
+             
+            <div class="col-md-6 mb-3">
+                <label  class="form-label">Event Title</label>
+                <input type="email" class="form-control" [(ngModel)]="model.EventTitle">
+            </div>
+            <div class="col-md-3 mb-3">
+                <label  class="form-label">Event Type</label>
+                <input type="text" class="form-control" [(ngModel)]="model.EventType">
+            </div>
+            <div class="col-md-3 mb-3">
+                <label  class="form-label">Event Date</label>
+                <input type="date" class="form-control" [(ngModel)]="model.EventDate" >
+            </div>
+            <div class="col-md-3 mb-3">
+                <label  class="form-label">Last Date Registration </label>
+                <input type="date" class="form-control" [(ngModel)]="model.EventLastDate" >
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Event Starting Time</label>
+                <input type="time" class="form-control" [(ngModel)]="model.StartTime" >
+            </div>
+            <div class="col-md-3 mb-3">
+                <label  class="form-label">Event Ending Time</label>
+                <input type="time" class="form-control"  [(ngModel)]="model.EndTime">
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="formFile" class="form-label">Event Thumbnail Image</label>
+                <div class="input-group">
+                    <input type="file" class="form-control" [(ngModel)]="model.EventThumbnailImage"  (change)="displayThumbnail($event);">
+                    <div class="input-group-append" >
+                      <span class="input-group-text"  data-bs-toggle="modal" data-bs-target="#staticBackdrop1"><i class="fa-solid fa-eye"></i></span>
+                    </div>
+                  </div>
+                
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="formFile" class="form-label">Event Main Image </label>
+
+                <div class="input-group">
+                    <input type="file" class="form-control" [(ngModel)]="model.EventMainImage"  (change)="displayImage($event);">
+                    <div class="input-group-append">
+                      <span class="input-group-text" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-eye"></i></span>
+                    </div>
+                  </div>
+                
+            </div>
+            <div class="col-md-4">
+                <label  class="form-label">Event Place</label>
+                <input type="text"class="form-control" [(ngModel)]="model.EventPlace">
+            </div>
+            <div class="col-md-4 mb-2">
+                <label for="formFile" class="form-label">Summary (20 words)</label>
+               <textarea  class="form-control" [(ngModel)]="model.EventSummary"  name="" id="" cols="20" rows="8"></textarea>
+            </div>
+            <div class="col-md-8 mb-2">
+              <label for="formFile" class="form-label">Details (50 words)</label>
+               <textarea  class="form-control" [(ngModel)]="model.EventDetails"  name="" id="" cols="20" rows="8"></textarea>
+            </div>
+
+            <div class="col-md-4">
+              <label  class="form-label">Number Of Person Allowed</label>
+              <input type="number" min="1" max="4" class="form-control" [(ngModel)]="model.PersonAllowed">
+          </div>
+
+            <div class="col-md-12 d-flex align-items-center justify-content-end">
+                <button type="button" class="btn btn-outline-primary" (click)="onSubmit()">Submit</button>
+                <button type="button" class="btn btn-outline-dark" (click)="onClear()">Clear</button>
+            </div>
+
+
+           </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Event Thumbnail Image Modal -->
+  <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body d-flex align-items-center justify-content-center">
+          <img [src]="model.EventThumbnailImage" alt="">
+        </div>      
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- Event Main Image Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body d-flex align-items-center justify-content-center">
+          <img [src]="model.EventMainImage" alt="">
+        </div>      
+      </div>
+    </div>
+  </div>

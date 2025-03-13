@@ -1,0 +1,78 @@
+img{
+    width: 100%;
+    height: 450px;
+    border-radius: 10px;
+
+}
+.row{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+h2{
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: black;
+    font-weight: 400;
+}
+h4 img{
+  width: 20px;
+  height: 20px;
+}
+h2 img{
+    width: 25px;
+    height: 25px;
+  }
+
+  .EventDetails{
+    text-align: justify;
+    letter-spacing: 1px;
+    font-size: 15px;
+    font-weight: lighter;
+  }
+  h4 span{
+    color: black;
+  }
+
+  .button{
+    width: 100%;
+    letter-spacing: 2px;
+    font-weight: 300 !important;
+    padding: 5px;
+    border: none;
+    border-radius: 20px;
+    background-color: #228eb6 !important;
+    color: #ffff !important;
+
+}
+
+.form-group{
+  margin-bottom: 15px;
+}
+.button-1{
+  background-color: #2d3436;
+  color: #ffff;
+  text-transform: uppercase;
+  padding: 5px 30px;
+  border-radius: 5px;
+  letter-spacing: 2px;
+  outline: none;
+  border: none;
+}
+
+.button-2{
+  background-color: #228eb6;
+  color: #ffff;
+  text-transform: uppercase;
+  padding: 5px 30px;
+  border-radius: 5px;
+  letter-spacing: 2px;
+  outline: none;
+  border: none;
+}
+
+
+
+
+
+

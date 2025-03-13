@@ -1,0 +1,39 @@
+li{
+    list-style-type: none;
+    cursor: pointer;
+}
+.side-links{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+
+}
+
+li {
+    padding: 10px;
+    margin: 10px;
+    position: relative;
+    overflow: hidden;
+    width: 220px;
+}
+a{
+    text-decoration: none;
+    color: #ffff;
+    font-weight: 200;
+    letter-spacing: 1px;
+    margin-left: 25px;
+    font-size: 15px;
+    font-family: "Poppins", sans-serif;
+}
+
+li:hover{
+    backdrop-filter: blur(10px);
+    background-color: #ffffff2d;
+    border-radius: 10px;
+    transition: all 0.3s ease-in;
+}
+i{
+    color: #ffff;
+    font-size: 20px;
+}

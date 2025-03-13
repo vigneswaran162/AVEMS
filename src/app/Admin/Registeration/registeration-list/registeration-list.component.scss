@@ -1,0 +1,51 @@
+// .content{
+//     padding: 25px;
+// }
+
+mat-sidenav-container{
+    height: calc(100vh - 64px);
+    border: none !important;
+   
+}
+.content{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+mat-sidenav{
+    background-color: #242424;
+} 
+
+span{
+    font-weight: lighter;
+    letter-spacing: 2px;
+}
+
+
+
+h4{
+    line-height: 2px;
+    font-family: "Poppins", sans-serif;
+    letter-spacing: 1px;
+}
+
+.box:hover{
+    background-color: #9b59b6;
+    color: #ffff;
+    transition: all 0.3s ease-in;
+    font-family: "Poppins", sans-serif;
+}
+.box:hover span{
+  font-weight: 500;
+}
+.box:hover h4{
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+
+span{
+    font-size: 12px;
+    margin: 4px;
+}
