@@ -30,8 +30,8 @@ export class EventDetailsComponent implements OnInit {
   if (param != "0" && param != null && param != undefined) {
     this.getById(param);
   }
-  this.GetAll()
-  this.GetDOB()
+  // this.GetAll()
+  // this.GetDOB()
   
   
  
@@ -45,7 +45,7 @@ export class EventDetailsComponent implements OnInit {
      if (response.Boolval == true) {
     
        
-         this.EventDetail = response.data;
+         this.EventDetail = response.data[0];
          this.Title = response.data.EventTitle;
   
          if (
@@ -59,7 +59,7 @@ export class EventDetailsComponent implements OnInit {
           this.EventDetail.EventMainImage = 'data:image/png;base64,' + this.EventDetail.EventMainImage;
         }
 
-        this.GetRegisterationID()
+        // this.GetRegisterationID()
       }
   
    

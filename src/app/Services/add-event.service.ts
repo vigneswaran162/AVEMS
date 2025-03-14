@@ -6,23 +6,28 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class AddEventService {
   private APIUrl: string;
+
+  private apiurl:string = 'https://backendvercel-brown.vercel.app/'
+
   constructor(private http:HttpClient) { }
+
+
 
   
 async GetAll(): Promise<any> {
-  this.APIUrl = 'http://localhost:3000/api/AddEvents/GetAll';
+  this.APIUrl = this.apiurl+'GetEvents';
   let res = await this.http.get(this.APIUrl).toPromise()
   return res
 }
 async GetById(id:any): Promise<any> {
-this.APIUrl = 'http://localhost:3000/api/AddEvents/GetById?EventNo='+id;
+this.APIUrl = 'http://localhost:8000/EventsGetById?EventNo='+id;
 let res = await this.http.get(this.APIUrl).toPromise()
 return res
 }
 
 async CRUD(entity:any): Promise<any> {
 if (entity.OpsType == "S") {
-  this.APIUrl = 'http://localhost:3000/api/AddEvents/Insert';
+  this.APIUrl = this.apiurl+'AddEvents';
 }
 else if (entity.OpsType == "U") {
   this.APIUrl = 'http://localhost:3000/api/AddEvents/Update';

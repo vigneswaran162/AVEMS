@@ -1,18 +1,21 @@
 <app-navbar></app-navbar>
-<div class="container">
+<div class="container mb-5" style="margin-top: 100px ;">
     <div class="row">
         <div class="col-md-10 mt-3">
             <img [src]="EventDetail.EventMainImage" alt="">
         </div>
-        <div class="col-md-10 ">
+        <div class="col-md-10 mt-4 ">
            <div class="row">
 
-            <div class="col-md-6 mt-4">
-                <h2>{{EventDetail.EventTitle}}</h2>
-                <h4><img src="../assets/icons8-calendar-96.png" class="img-fluid" alt=""> {{EventDetail.EventDate}} <img src="../assets/icons8-time-100.png" class="img-fluid" alt=""> {{EventDetail.StartTime}} - {{EventDetail.EndTime}} </h4>
-            </div>
             <div class="col-md-6">
-                <h2><img src="../assets/icons8-location-100.png" class="img-fluid" alt=""> {{EventDetail.EventPlace}}</h2>
+              <h2 class="mb-3">
+                <span class="first-word">{{ EventDetail.EventTitle }}</span>
+              </h2>                
+              <h4 class="mb-3 time"><i class="fa-solid fa-calendar"></i> {{EventDetail.EventDate | date:'dd-MM-YYY'}} <i class="fa-solid fa-clock fa-flip"></i> {{EventDetail.StartTime}} - {{EventDetail.EndTime}} </h4>
+            </div>
+
+            <div class="col-md-6">
+                <h2 class="Eventplace"><i class="fa-solid fa-location-dot fa-beat"></i> {{EventDetail.EventPlace}}</h2>
                 <div class="row">
                     <div class="col-md-6">
                         <button data-bs-toggle="modal" class="button" data-bs-target="#staticBackdrop" (click)="GetRegisterationID()">Register</button> 
@@ -24,20 +27,34 @@
                 <!-- <h4><span>NUMBER OF PERSON ALLOWED:</span> {{EventDetail.PersonAllowed}} <span>ALREADY APPLIED:</span> 0</h4> -->
             </div>
             <div class="col-md-12">
-                <h2>Event Description</h2>
-                <p class="EventDetails">
+                <h2>Event <span>Description</span></h2>
+                <p class="EventDetails text-muted">
                     {{EventDetail.EventDetails}}
                 </p>
             </div>
             <div class="col-md-12">
-                <h2>Rules & Instruction</h2>
-
+                <h2>Rules & <span>Instruction</span></h2>
+               <ul>
+                <li class="text-muted">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam qui ex assumenda molestias doloribus harum, veritatis illo vel voluptatem, aliquam itaque animi tempore asperiores consequatur magnam illum eum provident obcaecati?</li>
+                <li class="text-muted">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas necessitatibus nobis sequi temporibus et, odio repellat magni consequuntur nisi maxime, voluptates possimus odit laudantium asperiores illum ab expedita harum quidem.</li>
+                <li class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, exercitationem. Soluta reiciendis culpa necessitatibus qui dolore velit libero, nam nulla sapiente illum. Soluta aliquid blanditiis obcaecati facere magni ex placeat!</li>
+                <li class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi eligendi ad velit officia libero voluptas, laboriosam nulla minima soluta beatae. Quidem animi quas deserunt officia beatae repudiandae ducimus, culpa amet!</li>
+                <li class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi eligendi ad velit officia libero voluptas, laboriosam nulla minima soluta beatae. Quidem animi quas deserunt officia beatae repudiandae ducimus, culpa amet!</li>
+               </ul>
                 
          
             </div>
         </div>
     </div>
 </div>
+</div>
+
+<app-footer></app-footer>
+
+
+
+
+
 
 
 

@@ -16,4 +16,5 @@ export class AddEventModel{
     UpdatedBy:string;
     OpsType:string;
     CreatedBy:string;
+    Type:string;
 }

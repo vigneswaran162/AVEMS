@@ -117,6 +117,11 @@ if(this.model.EventDetails ==  "" || this.model.EventDetails || this.model.Event
   return false
 }
 
+if(this.model.Type ==  "" || this.model.Type || this.model.Type == undefined){
+  this.toast.showError('Event Status Cannot Be Blank','')
+  return false
+}
+
 return true
 
 }
@@ -132,16 +137,17 @@ preparemodel(){
   mod.EndTime = this.model.EndTime;
   if (this.model.EventThumbnailImage != null && this.model.EventThumbnailImage != '') {
     mod.EventThumbnailImage = this.model.EventThumbnailImage.replace(/^data:image\/(png|jpeg|jpg);base64,/, '');
-    mod.EventThumbnailImage = this.base64ToArrayBuffer(mod.EventThumbnailImage)
+    // mod.EventThumbnailImage = this.base64ToArrayBuffer(mod.EventThumbnailImage)
   }
   if (this.model.EventMainImage != null && this.model.EventMainImage != '') {
     mod.EventMainImage = this.model.EventMainImage.replace(/^data:image\/(png|jpeg|jpg);base64,/, '');
-    mod.EventMainImage = this.base64ToArrayBuffer(mod.EventMainImage)
+    // mod.EventMainImage = this.base64ToArrayBuffer(mod.EventMainImage)
   }
   mod.EventSummary = this.model.EventSummary;
   mod.EventDetails = this.model.EventDetails;
   mod.EventPlace = this.model.EventPlace;
   mod.PersonAllowed = this.model.PersonAllowed;
+  mod.Type = this.model.Type
   mod.Void = 'N'
   return mod
 }

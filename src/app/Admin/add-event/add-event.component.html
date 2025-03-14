@@ -13,37 +13,37 @@
            <div class="row px-5 py-3">
             <div class="col-md-3 mb-3">
                 <label class="form-label">Event No.</label>
-                <input type="email" [readonly]="isUpdate" class="form-control"  [(ngModel)]="model.EventNo" >
+                <input type="email" [readonly]="isUpdate" class="form-control form-control-sm"  [(ngModel)]="model.EventNo" >
             </div>
              
             <div class="col-md-6 mb-3">
                 <label  class="form-label">Event Title</label>
-                <input type="email" class="form-control" [(ngModel)]="model.EventTitle">
+                <input type="email" class="form-control form-control-sm" [(ngModel)]="model.EventTitle">
             </div>
             <div class="col-md-3 mb-3">
                 <label  class="form-label">Event Type</label>
-                <input type="text" class="form-control" [(ngModel)]="model.EventType">
+                <input type="text" class="form-control form-control-sm" [(ngModel)]="model.EventType">
             </div>
             <div class="col-md-3 mb-3">
                 <label  class="form-label">Event Date</label>
-                <input type="date" class="form-control" [(ngModel)]="model.EventDate" >
+                <input type="date" class="form-control form-control-sm" [(ngModel)]="model.EventDate" >
             </div>
             <div class="col-md-3 mb-3">
                 <label  class="form-label">Last Date Registration </label>
-                <input type="date" class="form-control" [(ngModel)]="model.EventLastDate" >
+                <input type="date" class="form-control form-control-sm" [(ngModel)]="model.EventLastDate" >
             </div>
             <div class="col-md-3 mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Event Starting Time</label>
-                <input type="time" class="form-control" [(ngModel)]="model.StartTime" >
+                <input type="time" class="form-control form-control-sm" [(ngModel)]="model.StartTime" >
             </div>
             <div class="col-md-3 mb-3">
                 <label  class="form-label">Event Ending Time</label>
-                <input type="time" class="form-control"  [(ngModel)]="model.EndTime">
+                <input type="time" class="form-control form-control-sm"  [(ngModel)]="model.EndTime">
             </div>
             <div class="col-md-4 mb-3">
                 <label for="formFile" class="form-label">Event Thumbnail Image</label>
                 <div class="input-group">
-                    <input type="file" class="form-control" [(ngModel)]="model.EventThumbnailImage"  (change)="displayThumbnail($event);">
+                    <input type="file" class="form-control form-control-sm" [(ngModel)]="model.EventThumbnailImage"  (change)="displayThumbnail($event);">
                     <div class="input-group-append" >
                       <span class="input-group-text"  data-bs-toggle="modal" data-bs-target="#staticBackdrop1"><i class="fa-solid fa-eye"></i></span>
                     </div>
@@ -54,7 +54,7 @@
                 <label for="formFile" class="form-label">Event Main Image </label>
 
                 <div class="input-group">
-                    <input type="file" class="form-control" [(ngModel)]="model.EventMainImage"  (change)="displayImage($event);">
+                    <input type="file" class="form-control form-control-sm" [(ngModel)]="model.EventMainImage"  (change)="displayImage($event);">
                     <div class="input-group-append">
                       <span class="input-group-text" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-eye"></i></span>
                     </div>
@@ -63,21 +63,35 @@
             </div>
             <div class="col-md-4">
                 <label  class="form-label">Event Place</label>
-                <input type="text"class="form-control" [(ngModel)]="model.EventPlace">
+                <input type="text"class="form-control form-control-sm" [(ngModel)]="model.EventPlace">
             </div>
             <div class="col-md-4 mb-2">
                 <label for="formFile" class="form-label">Summary (20 words)</label>
-               <textarea  class="form-control" [(ngModel)]="model.EventSummary"  name="" id="" cols="20" rows="8"></textarea>
+               <textarea  class="form-control form-control-sm" [(ngModel)]="model.EventSummary"  name="" id="" cols="20" rows="6"></textarea>
             </div>
             <div class="col-md-8 mb-2">
               <label for="formFile" class="form-label">Details (50 words)</label>
-               <textarea  class="form-control" [(ngModel)]="model.EventDetails"  name="" id="" cols="20" rows="8"></textarea>
+               <textarea  class="form-control form-control-sm" [(ngModel)]="model.EventDetails"  name="" id="" cols="20" rows="6"></textarea>
             </div>
 
             <div class="col-md-4">
               <label  class="form-label">Number Of Person Allowed</label>
-              <input type="number" min="1" max="4" class="form-control" [(ngModel)]="model.PersonAllowed">
+              <input type="number" min="1" max="4" class="form-control form-control-sm" [(ngModel)]="model.PersonAllowed">
           </div>
+
+          <div class="col-md-4">
+            <label  class="form-label">Status</label>
+            <select class="form-select form-control-sm" aria-label="Default select example"  [(ngModel)]="model.Type">
+              <option selected>Open this select menu</option>
+              <option value="upcoming">upcoming</option>
+              <option value="Current">Current</option>
+              <option value="Close">Close</option>
+
+            </select>        
+          </div>
+
+
+         
 
             <div class="col-md-12 d-flex align-items-center justify-content-end">
                 <button type="button" class="btn btn-outline-primary" (click)="onSubmit()">Submit</button>
@@ -119,3 +133,5 @@
       </div>
     </div>
   </div>
+
+

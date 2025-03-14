@@ -1,6 +1,6 @@
 img{
     width: 100%;
-    height: 450px;
+    height: 300px;
     border-radius: 10px;
 
 }
@@ -12,8 +12,9 @@ img{
 h2{
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: black;
-    font-weight: 400;
+    color: #0a3d62;
+    font-weight: 600;
+    font-size: 20px !important;
 }
 h4 img{
   width: 20px;
@@ -26,22 +27,26 @@ h2 img{
 
   .EventDetails{
     text-align: justify;
-    letter-spacing: 1px;
     font-size: 15px;
-    font-weight: lighter;
+
   }
-  h4 span{
+  h4 {
     color: black;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: black;
+    font-weight: 600;
+    font-size: 18px !important;
   }
 
   .button{
     width: 100%;
     letter-spacing: 2px;
-    font-weight: 300 !important;
+    font-weight: 500 !important;
     padding: 5px;
     border: none;
     border-radius: 20px;
-    background-color: #228eb6 !important;
+    background-color:#0a3d62 !important;
     color: #ffff !important;
 
 }
@@ -75,4 +80,37 @@ h2 img{
 
 
 
+.first-word {
+  color: #0a3d62 !important;
+}
 
+.second-word {
+  color: #60a3bc !important; 
+}
+
+h2{
+  color: #0a3d62 !important;
+
+}
+h2 span{
+  color: #60a3bc !important; 
+
+}
+.Eventplace{
+  color: #60a3bc !important;
+}
+.Eventplace i{
+  color: #0c2461;
+}
+.time{
+  color: #2f3542 !important;
+}
+.time i{
+  color: #0a3d62 !important;
+}
+ul li{
+  margin-bottom: 10px !important;
+  font-size: 15px !important;
+  text-align: justify;
+
+}
