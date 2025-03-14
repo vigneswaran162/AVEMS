@@ -5,10 +5,13 @@
 nav a{
    
     font-size: 15px;
-    font-weight: 380;
+    font-weight: 500;
     letter-spacing: 2px;
   
 }
 nav a:hover{
     color: #2d3436 !important;
+}
+.navbar-brand {
+    font-weight: 600 !important;
 }

@@ -27,6 +27,9 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatIconModule} from '@angular/material/icon';
 import { SideNavLinkComponent } from './Admin/side-nav-link/side-nav-link.component';
 import { FooterComponent } from './Content/footer/footer.component';
+import { LatesteventsComponent } from './latestevents/latestevents.component';
+import { AboutusComponent } from './Content/aboutus/aboutus.component';
+import { ContactusComponent } from './Content/contactus/contactus.component';
 
 
 @NgModule({
@@ -41,7 +44,10 @@ import { FooterComponent } from './Content/footer/footer.component';
     EventDetailsComponent,
     RegisterationListComponent,
     SideNavLinkComponent,
-    FooterComponent
+    FooterComponent,
+    LatesteventsComponent,
+    AboutusComponent,
+    ContactusComponent
   ],
   imports: [
     BrowserModule,
