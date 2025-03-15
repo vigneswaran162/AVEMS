@@ -2,20 +2,20 @@
 <div class="container mb-5" style="margin-top: 100px ;">
     <div class="row">
         <div class="col-md-10 mt-3">
-            <img [src]="EventDetail.EventMainImage" alt="">
+            <img [src]="EventDetail?.EventMainImage" alt="">
         </div>
         <div class="col-md-10 mt-4 ">
            <div class="row">
 
             <div class="col-md-6">
               <h2 class="mb-3">
-                <span class="first-word">{{ EventDetail.EventTitle }}</span>
+                <span class="first-word">{{ EventDetail?.EventTitle }}</span>
               </h2>                
-              <h4 class="mb-3 time"><i class="fa-solid fa-calendar"></i> {{EventDetail.EventDate | date:'dd-MM-YYY'}} <i class="fa-solid fa-clock fa-flip"></i> {{EventDetail.StartTime}} - {{EventDetail.EndTime}} </h4>
+              <h4 class="mb-3 time"><i class="fa-solid fa-calendar"></i> {{EventDetail?.EventDate | date:'dd-MM-YYY'}} <i class="fa-solid fa-clock fa-flip"></i> {{EventDetail?.StartTime}} - {{EventDetail?.EndTime}} </h4>
             </div>
 
             <div class="col-md-6">
-                <h2 class="Eventplace"><i class="fa-solid fa-location-dot fa-beat"></i> {{EventDetail.EventPlace}}</h2>
+                <h2 class="Eventplace"><i class="fa-solid fa-location-dot fa-beat"></i> {{EventDetail?.EventPlace}}</h2>
                 <div class="row">
                     <div class="col-md-6">
                         <button data-bs-toggle="modal" class="button" data-bs-target="#staticBackdrop" (click)="GetRegisterationID()">Register</button> 
@@ -29,7 +29,7 @@
             <div class="col-md-12">
                 <h2>Event <span>Description</span></h2>
                 <p class="EventDetails text-muted">
-                    {{EventDetail.EventDetails}}
+                    {{EventDetail?.EventDetails}}
                 </p>
             </div>
             <div class="col-md-12">
@@ -73,11 +73,11 @@
           <div class="form">
             <div class="form-group">
               <label >Roll No <span class="text-danger">*</span></label>
-              <input type="text" pattern="^[a-zA-Z0-9]*$" class="form-control form-control-sm" [(ngModel)]="model.RollNo"  (blur)="OnBlurRollNo($event)" minlength="6" maxlength="14">
+              <input type="text"  class="form-control form-control-sm" [(ngModel)]="model.RollNo"  (blur)="OnBlurRollNo($event)" minlength="6" maxlength="14">
             </div>
             <div class="form-group">
               <label >Full Name <span class="text-danger">*</span></label>
-              <input type="text" class="form-control form-control-sm" [(ngModel)]="model.FullName" pattern="^[a-zA-Z]*$" (blur)="OnBlurName($event)" minlength="4" maxlength="50" >
+              <input type="text" class="form-control form-control-sm" [(ngModel)]="model.FullName"  (blur)="OnBlurName($event)" minlength="4" maxlength="50" >
             </div>
             <div class="form-group">
               <label >DOB <span class="text-danger">*</span></label>
@@ -85,7 +85,7 @@
             </div>
             <div class="form-group">
               <label >Email address <span class="text-danger">*</span></label>
-              <input type="email" class="form-control form-control-sm" [(ngModel)]="model.EmailAddress" (blur)="onblurEmailAddress($event)"  pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" >
+              <input type="email" class="form-control form-control-sm" [(ngModel)]="model.EmailAddress" (blur)="onblurEmailAddress($event)"   >
             </div>
             <div class="form-group">
               <label >Phone No <span class="text-danger">*</span></label>

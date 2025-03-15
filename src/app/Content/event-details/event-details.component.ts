@@ -187,12 +187,12 @@ export class EventDetailsComponent implements OnInit {
       this.Toast.showWarning('Only numeric characters allowed (minimum 10 characters)', '');
 
     }
-    let value = event.target.value
-    let phone =  this.RegisterationDetals.filter((i:any)=> i.PhoneNo == value )
-    if(phone.length>0){
-      this.Toast.showInfo('Phone Number Already Exist','')
-      this.model.PhoneNo =""
-    }
+    // let value = event.target.value
+    // let phone =  this.RegisterationDetals.filter((i:any)=> i.PhoneNo == value )
+    // if(phone.length>0){
+    //   this.Toast.showInfo('Phone Number Already Exist','')
+    //   this.model.PhoneNo =""
+    // }
   }
 
 
@@ -225,12 +225,12 @@ export class EventDetailsComponent implements OnInit {
       this.Toast.showWarning('Invalid Email Address', '');
 
     }
-    let value = event.target.value
-    let EmailAddress =  this.RegisterationDetals.filter((i:any)=> i.EmailAddress == value )
-    if(EmailAddress.length>0){
-      this.Toast.showInfo('Email Address Already Exist','')
-      this.model.EmailAddress =""
-    }
+    // let value = event.target.value
+    // let EmailAddress =  this.RegisterationDetals.filter((i:any)=> i.EmailAddress == value )
+    // if(EmailAddress.length>0){
+    //   this.Toast.showInfo('Email Address Already Exist','')
+    //   this.model.EmailAddress =""
+    // }
   }
 
  GetDOB() {

@@ -30,6 +30,7 @@ export class RegisterationEventService {
   async CRUD(entity:any): Promise<any> {
   if (entity.OpsType == "S") {
     this.APIUrl = this.apiurl+'RegisterEvent';
+    // this.APIUrl = 'http://localhost:8000/RegisterEvent'
   }
   else if (entity.OpsType == "U") {
     this.APIUrl = 'http://localhost:3000/api/RegisterationEvent/Update';
