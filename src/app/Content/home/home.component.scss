@@ -126,3 +126,50 @@ p{
     }
   }
   
+
+  @media screen and (max-width: 600px) {
+    h3{
+        font-size: 18px !important;
+    }
+    h6,h5{
+        font-size: 14px !important;
+    }
+    .announce-img{
+        height: 200px !important;
+    }
+    p{
+        font-size: 10px !important;
+    }
+    .btn-danger{
+        font-size: 12px !important;
+    }
+    .swiper{
+        margin-bottom: 40px !important;
+    }
+    .bg-blue{
+        font-size: 8px !important;
+    }
+    .date{
+        font-size: 8px !important;
+
+    }
+
+    .register-btn{
+        background-color: #6ab04c !important;
+        color: #fff !important;
+        font-size: 10px !important;
+        padding: 2px 10px  !important;
+        border: none !important;
+        font-weight: 500 !important;
+        letter-spacing: 1px !important;
+     }
+
+     .img-box{
+        padding: 5px;
+        height: 15vh !important;
+        overflow:  hidden !important;
+    }
+    h6{
+        font-size: 10px;
+    }
+  }
