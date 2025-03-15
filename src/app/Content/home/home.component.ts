@@ -11,7 +11,7 @@ declare var $: any;
   styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnInit  {
-
+  isLoading:boolean=false;
  
   constructor (private service:AddEventService,
     private router:Router,
@@ -82,8 +82,10 @@ export class HomeComponent implements OnInit  {
      
   
      async GetAll(){
+      this.isLoading =true;
         let response = await this.service.GetAll().catch(err=>{
             alert(err.message)
+            this.isLoading =false;
         })
         if(response != undefined){
             this.EventDetails = response.data.filter((i:any) => i.Type == 'upcoming');
@@ -94,9 +96,12 @@ export class HomeComponent implements OnInit  {
               }
             });
          
-            
+            this.isLoading =false;
+
         }else{
           alert(response.returnerror)
+          this.isLoading =false;
+
         }
       }
   

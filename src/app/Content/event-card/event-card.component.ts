@@ -8,6 +8,8 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrl: './event-card.component.scss'
 })
 export class EventCardComponent implements OnInit {
+
+  isLoading:boolean =false;
     constructor (private service:AddEventService,
       private router:Router,
       private route:ActivatedRoute){}
@@ -17,10 +19,13 @@ export class EventCardComponent implements OnInit {
     }
 
    async GetAll(){
+    this.isLoading =true
       let response = await this.service.GetAll().catch(err=>{
           alert(err.message)
+          this.isLoading =false
       })
       if(response != undefined){
+
           this.EventDetails = response.data.filter((i:any) => i.Type == 'Current');
           this.EventDetails.forEach((event:any) => {
             if (event.EventThumbnailImage) {
@@ -29,8 +34,11 @@ export class EventCardComponent implements OnInit {
             }
           });
        
-          
+          this.isLoading =false
+
       }else{
+        this.isLoading =false
+
         alert(response.returnerror)
       }
     }

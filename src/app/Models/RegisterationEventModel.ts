@@ -9,5 +9,6 @@ export class RegisterationModel {
     CollegeName:string;
     Department:string;
     Void:string;
+    EventNo:string;
     OpsType:string;	
 }
