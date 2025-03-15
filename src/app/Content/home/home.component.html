@@ -67,7 +67,7 @@
       </div>
     </div>
 
-    <div class="col-md-12 bg-light p-5 shadow mt-5">
+    <div class="col-md-12 bg-light p-5 shadow">
       <div class="row">
         <div class="col-md-5 col-sm-12">
           <h3>EVENT <span>ANNOUNCEMENT</span></h3>
@@ -131,14 +131,14 @@
              
             
            
-              <div class="swiper-slide  d-flex align-items-center justify-content-center" style="height: 20vh;"  *ngFor="let row of EventDetails">
+              <div class="swiper-slide mb-3 d-flex align-items-center justify-content-center" style="height: 20vh;"  *ngFor="let row of EventDetails">
                 <div class="img-box" style="width:30%;">
                   <img [src]="row.EventThumbnailImage" class="img-fluid" alt="">
 
                 </div>
                 <div class="box-contain" style="width:70%;">
                   <h6>{{row.EventTitle}}</h6>
-                  <span class="badge bg-blue mx-3">{{row.EventType}}</span> <span class="date"> <i class="fa fa-calendar"
+                  <span class="badge bg-blue mx-2">{{row.EventType}}</span> <span class="date"> <i class="fa fa-calendar"
                       aria-hidden="true"></i> {{row.EventDate | date: 'dd/MM/yyyy'}}</span>
                   <p class="m-1">
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate minus eos earum quae
