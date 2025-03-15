@@ -170,3 +170,24 @@ ul li{
       transform: translateY(0px);
   }
 }
+
+
+
+@media screen and (max-width: 600px) {
+ ul li{
+  font-size: 10px !important;
+ }
+ p{
+  font-size: 10px !important;
+ }
+ h2{
+  font-size: 14px !important;
+ }
+ h4{
+  font-size: 14px !important;
+
+ }
+ .button{
+  font-size: 12px !important;
+ }
+}

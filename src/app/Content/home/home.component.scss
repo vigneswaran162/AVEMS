@@ -127,6 +127,18 @@ p{
   }
   
 
+  .swiper1 {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .swiper-slide1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+  }
+
   @media screen and (max-width: 600px) {
     h3{
         font-size: 18px !important;
@@ -153,6 +165,9 @@ p{
         font-size: 8px !important;
 
     }
+
+
+
 
     .register-btn{
         background-color: #6ab04c !important;

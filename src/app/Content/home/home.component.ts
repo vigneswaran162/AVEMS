@@ -45,13 +45,40 @@ export class HomeComponent implements OnInit  {
   });
 
 
+  // const swiper1 = new Swiper('.swiper1', {
+  //   // Optional parameters
+  //   direction: 'horizontal',
+  //   loop: true,
+  // spaceBetween: 10,
+  // slidesPerView: 3,
+
+  //   autoplay: {
+  //     delay: 2500,
+  //     disableOnInteraction: false,
+  //   },
+  //   pagination: {
+  //     el: ".swiper-pagination",
+  //     clickable: true,
+  //   },
+  //   // Navigation arrows
+  //   navigation: {
+  //     nextEl: '.swiper-button-next',
+  //     prevEl: '.swiper-button-prev',
+  //   },
+  
+  //   // And if we need scrollbar
+  //   scrollbar: {
+  //     el: '.swiper-scrollbar',
+  //   },
+  // });
+
+
   const swiper1 = new Swiper('.swiper1', {
-    // Optional parameters
     direction: 'horizontal',
     loop: true,
-  spaceBetween: 10,
-  slidesPerView: 3,
-
+    spaceBetween: 10,
+    slidesPerView: 3, // Default for large screens
+  
     autoplay: {
       delay: 2500,
       disableOnInteraction: false,
@@ -60,17 +87,27 @@ export class HomeComponent implements OnInit  {
       el: ".swiper-pagination",
       clickable: true,
     },
-    // Navigation arrows
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
     },
-  
-    // And if we need scrollbar
     scrollbar: {
       el: '.swiper-scrollbar',
     },
+  
+    breakpoints: {
+      320: {
+        slidesPerView: 1, // For small screens
+      },
+      768: {
+        slidesPerView: 2, // For tablets
+      },
+      1024: {
+        slidesPerView: 3, // For desktops
+      }
+    }
   });
+  
    
     this.GetAll()
     
