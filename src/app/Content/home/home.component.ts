@@ -146,6 +146,12 @@ export class HomeComponent implements OnInit  {
       EventDetail(id: any): void {
         this.router.navigate(['/EventDetail',id.EventNo], { relativeTo: this.route });
       }
+    
+
+      latestEvent(): void {
+        let title = 'music concept'
+        this.router.navigate(['/latest',title], { relativeTo: this.route });
+      }
 
   
 }

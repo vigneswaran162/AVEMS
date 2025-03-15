@@ -7,6 +7,7 @@ import { EventDetailsComponent } from './Content/event-details/event-details.com
 import { RegisterationListComponent } from './Admin/Registeration/registeration-list/registeration-list.component';
 import { AboutusComponent } from './Content/aboutus/aboutus.component';
 import { ContactusComponent } from './Content/contactus/contactus.component';
+import { LatesteventsComponent } from './latestevents/latestevents.component';
 
 const routes: Routes = [{
   path:'AddEvent/:id',
@@ -28,6 +29,10 @@ const routes: Routes = [{
 },{
   path:'contactus',
   component:ContactusComponent
+},
+{
+  path:'latest/:id',
+  component:LatesteventsComponent
 }
 ];
 
