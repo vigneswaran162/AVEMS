@@ -2,7 +2,7 @@ export class RegisterationModel {
     RegisterationID:string;
     EventTitle:string;
     RollNo:string;
-    FullNmae:string;
+    FullName:string;
     EmailAddress:string;
     PhoneNo:string;	
     DOB:Date;

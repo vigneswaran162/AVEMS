@@ -11,7 +11,7 @@
               <span class="mx-2 type">{{row.EventType}}</span>
               <span class="date">{{row.EventDate | date: 'dd/MM/yyyy'}}</span>
             </div>
-            <p>
+            <p class="text-muted">
                 {{row.EventSummary}}
             </p>
             <button (click)="EventDetail(row)">Register Now</button>

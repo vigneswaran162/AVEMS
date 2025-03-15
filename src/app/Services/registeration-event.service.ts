@@ -7,6 +7,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class RegisterationEventService {
 
   private APIUrl: string;
+
+  private apiurl:string = 'https://backendvercel-brown.vercel.app/'
+
+
+
   constructor(private http:HttpClient) { }
 
   async GetRegisterationALL(): Promise<any> {
@@ -24,7 +29,7 @@ export class RegisterationEventService {
   
   async CRUD(entity:any): Promise<any> {
   if (entity.OpsType == "S") {
-    this.APIUrl = 'http://localhost:3000/api/RegisterationEvent/Insert';
+    this.APIUrl = this.apiurl+'RegisterEvent';
   }
   else if (entity.OpsType == "U") {
     this.APIUrl = 'http://localhost:3000/api/RegisterationEvent/Update';

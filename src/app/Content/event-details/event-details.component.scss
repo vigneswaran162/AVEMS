@@ -55,7 +55,7 @@ h2 img{
   margin-bottom: 15px;
 }
 .button-1{
-  background-color: #2d3436;
+  background-color:#228eb6 !important;
   color: #ffff;
   text-transform: uppercase;
   padding: 5px 30px;
@@ -63,10 +63,11 @@ h2 img{
   letter-spacing: 2px;
   outline: none;
   border: none;
+  font-weight: 500 !important;
 }
 
 .button-2{
-  background-color: #228eb6;
+  background-color: #0a3d62 !important;
   color: #ffff;
   text-transform: uppercase;
   padding: 5px 30px;
@@ -74,9 +75,14 @@ h2 img{
   letter-spacing: 2px;
   outline: none;
   border: none;
+  font-weight: 500 !important;
+
 }
 
-
+label{
+  font-size: 14px !important;
+  font-weight: 600 !important;
+}
 
 
 
@@ -113,4 +119,16 @@ ul li{
   font-size: 15px !important;
   text-align: justify;
 
+}
+
+.swal-custom-title {
+  font-size: 10px !important; 
+}
+
+.modal-title{
+  color: #0a3d62 !important;
+}
+
+.modal-title span{
+  color: #228eb6 !important;
 }

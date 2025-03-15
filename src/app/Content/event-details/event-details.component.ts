@@ -25,13 +25,15 @@ export class EventDetailsComponent implements OnInit {
   private router:Router,
   private Toast:ToastNofificationService){}
  ngOnInit(): void {
+
+
   this.model = new RegisterationModel();
   const param = this.route.snapshot.paramMap.get('id');
   if (param != "0" && param != null && param != undefined) {
     this.getById(param);
   }
   // this.GetAll()
-  // this.GetDOB()
+  this.GetDOB()
   
   
  
@@ -74,7 +76,7 @@ export class EventDetailsComponent implements OnInit {
         this.Toast.showInfo('Roll No cannot Be Blank','')
         return false
       }
-      if(this.model.FullNmae == "" || this.model.FullNmae == null || this.model.FullNmae == undefined){
+      if(this.model.FullName == "" || this.model.FullName == null || this.model.FullName == undefined){
         this.Toast.showInfo('Full Name cannot Be Blank','')
         return false
       }
@@ -99,10 +101,10 @@ export class EventDetailsComponent implements OnInit {
 
     preparemodel(){
       const mod = new RegisterationModel();
-      mod.RegisterationID= this.model.RegisterationID;
+      mod.RegisterationID= 'IN001';
       mod.EventTitle = this.EventDetail.EventTitle;
       mod.RollNo = this.model.RollNo;
-      mod.RegisterationID = this.model.RegisterationID;
+      mod.FullName = this.model.FullName;
       mod.EmailAddress = this.model.EmailAddress;
       mod.PhoneNo = this.model.PhoneNo;
       mod.CollegeName = this.model.CollegeName;
@@ -133,17 +135,19 @@ export class EventDetailsComponent implements OnInit {
 
         Swal.fire({
           title: 'Sucessfully Registered',
+          text: 'Event successfully registered. Please check your email for the ticket.',
           timer: 2000,
           icon: 'success',
           showCancelButton: false,
           showConfirmButton: false,
           customClass: {
-            icon: 'custom-icon-class' 
+            icon: 'custom-icon-class' ,
+            title: 'swal-custom-title', 
           }
         })
         this.model = new RegisterationModel();
         window.location.reload();
-        this.GetRegisterationID()
+        // this.GetRegisterationID()
      
 
       }else{
@@ -157,16 +161,16 @@ export class EventDetailsComponent implements OnInit {
 
     async GetRegisterationID(){
     
-      let title =   this.Title
+      // let title =   this.Title
 
-      let response:any = await this.Register.GetRegisterationID(title).catch(err=>{
-        this.Toast.showError(err.message,'')
-      })
-      if(response != undefined){
-        this.model.RegisterationID = response.data.RegisterationID
-      }else{
-        this.Toast.showError(response.error,'')
-      }
+      // let response:any = await this.Register.GetRegisterationID(title).catch(err=>{
+      //   this.Toast.showError(err.message,'')
+      // })
+      // if(response != undefined){
+      //   this.model.RegisterationID = response.data.RegisterationID
+      // }else{
+      //   this.Toast.showError(response.error,'')
+      // }
     }
 
     async GetAll(){
@@ -180,6 +184,8 @@ export class EventDetailsComponent implements OnInit {
   OnBlurPhoneNo(event:any){
     if (!event.target.validity.valid){
       this.model.PhoneNo = "";
+      this.Toast.showWarning('Only numeric characters allowed (minimum 10 characters)', '');
+
     }
     let value = event.target.value
     let phone =  this.RegisterationDetals.filter((i:any)=> i.PhoneNo == value )
@@ -189,9 +195,35 @@ export class EventDetailsComponent implements OnInit {
     }
   }
 
+
+
+
+  OnBlurRollNo(event:any){
+    if (!event.target.validity.valid){
+      this.model.RollNo = "";
+      this.Toast.showWarning('Only alphanumeric characters allowed (minimum 6 characters)', '');
+    }
+  }
+
+  OnBlurName(event:any){
+    if (!event.target.validity.valid){
+      this.model.FullName = "";
+      this.Toast.showWarning('Only alpha characters allowed (minimum 4 characters)', '');
+    }
+  }
+
+  OnBlurCollege(event:any){
+    if (!event.target.validity.valid){
+      this.model.CollegeName = "";
+      this.Toast.showWarning('Only alpha characters allowed (minimum 4 characters)', '');
+    }
+  }
+
   onblurEmailAddress(event:any){
     if (!event.target.validity.valid){
       this.model.EmailAddress = "";
+      this.Toast.showWarning('Invalid Email Address', '');
+
     }
     let value = event.target.value
     let EmailAddress =  this.RegisterationDetals.filter((i:any)=> i.EmailAddress == value )
