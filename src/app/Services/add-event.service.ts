@@ -20,7 +20,7 @@ async GetAll(): Promise<any> {
   return res
 }
 async GetById(id:any): Promise<any> {
-this.APIUrl = 'http://localhost:8000/EventsGetById?EventNo='+id;
+this.APIUrl = this.apiurl+'EventsGetById?EventNo='+id;
 let res = await this.http.get(this.APIUrl).toPromise()
 return res
 }

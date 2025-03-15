@@ -1,14 +1,14 @@
 <app-navbar></app-navbar>
-<div class="container-fluid"  style="margin-top: 100px ;">
-    <div class="row px-5 mt-4">
+<div class="container"  style="margin-top: 100px ;">
+    <div class="row">
         <div class="card-box"  *ngFor="let row of EventDetails">
           <div class="img-box">
-            <span class="type mx-2">{{row.EventType}}</span>
             <img [src]="row.EventThumbnailImage" alt="">
           </div>
-          <div class="card-content">
+          <div class="card-content px-3">
+            <h5 class="mt-2">{{row.EventTitle}}</h5>
             <div class="box mb-1">
-              <h5 class="mt-2">{{row.EventTitle}}</h5>
+              <span class="mx-2 type">{{row.EventType}}</span>
               <span class="date">{{row.EventDate | date: 'dd/MM/yyyy'}}</span>
             </div>
             <p>
@@ -22,3 +22,4 @@
 </div>
 
 <app-footer></app-footer>
+

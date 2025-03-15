@@ -126,23 +126,25 @@
           <div class="row px-2" style="height: 65vh;overflow-y:scroll;">
             <div class="col-md-11">
         
+
+
              
             
            
-              <div class="swiper-slide  d-flex align-items-center justify-content-center" style="height: 20vh;">
+              <div class="swiper-slide  d-flex align-items-center justify-content-center" style="height: 20vh;"  *ngFor="let row of EventDetails">
                 <div class="img-box" style="width:30%;">
-                  <img src="../assets/business.jpg" class="img-fluid" alt="">
+                  <img [src]="row.EventThumbnailImage" class="img-fluid" alt="">
 
                 </div>
                 <div class="box-contain" style="width:70%;">
-                  <h6>INTERNET OF <span>THINING (IOT)</span></h6>
-                  <span class="badge bg-blue mx-3">workshop</span> <span class="date"> <i class="fa fa-calendar"
-                      aria-hidden="true"></i> 25.05.2022</span>
+                  <h6>{{row.EventTitle}}</h6>
+                  <span class="badge bg-blue mx-3">{{row.EventType}}</span> <span class="date"> <i class="fa fa-calendar"
+                      aria-hidden="true"></i> {{row.EventDate | date: 'dd/MM/yyyy'}}</span>
                   <p class="m-1">
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate minus eos earum quae
                     placeat
                   </p>
-                  <button class="m-1 register-btn">VIEW REGISTER</button>
+                  <button class="m-1 register-btn" (click)="EventDetail(row)">VIEW REGISTER</button>
                 </div>
               </div>
 
