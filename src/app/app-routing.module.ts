@@ -38,6 +38,10 @@ const routes: Routes = [{
 {
   path:'EventList',
   component:AddEventListComponent
+},
+{
+  path:'Regiseration/:id',
+  component:RegisterationListComponent
 }
 ];
 

@@ -1,22 +1,24 @@
+     
+     <app-side-nav-link></app-side-nav-link>
 
-<mat-toolbar style="background-color: #9b59b6;color: #ffff;" class="px-3 mat-elevation-z3">
-    <mat-icon (click)="collapsed.set(!collapsed())">menu</mat-icon> 
-</mat-toolbar>
-<mat-sidenav-container>
-    <mat-sidenav  mode="side" [style.width]="sidenavWidth()" opened  >
-    <app-side-nav-link></app-side-nav-link>
-
-    </mat-sidenav>
-    <mat-sidenav-content class="content" [style.margin-left]="sidenavWidth()">
-     <div class="row p-5 gap-5">
+     
+<div class="container">
+    <div class="row gap-3 d-flex align-items-center justify-content-center" style="margin-top: 120px !important;">
            
-        <div class="col-md-3 d-flex shadow  p-4 box" style="border-radius: 10px;cursor: pointer;"  *ngFor="let row of dataList;">
+        <div  class="col-md-3 d-flex align-items-center justify-content-start shadow  py-3 px-2 box" style="border-radius: 10px;cursor: pointer;"  *ngFor="let row of dataList;">
               <img src="" alt="" style="width: 60px;">
             <div class="text-content">
                 <h4>{{row.EventTitle}}</h4>
                 <span>{{row.EventType}}</span> <span>{{row.EventDate}}</span>
             </div>
         </div>
+
+        <!-- <div class="col-md-10 d-flex align-items-center justify-content-center" *ngIf="isNoData" >
+            <img src="../assets/nodata.gif" class="img-fluid">
+        </div> -->
      </div>
-    </mat-sidenav-content>
-</mat-sidenav-container>
+</div>
+
+<div class="loading-overlay" *ngIf="isLoading" >
+    <div class="wavy"> <span style="--i:1;">L</span><span style="--i:2;">O</span><span style="--i:3;">A</span><span style="--i:4;">D</span><span style="--i:5;">I</span><span style="--i:6;">N</span><span style="--i:7;">G</span><span style="--i:8;">.</span><span style="--i:9;">.</span><span style="--i:10;">.</span></div>
+  </div>

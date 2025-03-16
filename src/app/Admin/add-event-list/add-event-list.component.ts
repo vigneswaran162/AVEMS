@@ -62,9 +62,7 @@ export class AddEventListComponent {
       let response:any = await this.service.GetAll().catch(err=>{
           this.toastr.showError(err.returnerror,this._formName)
           this.isLoading = false;
-
         })
-        
         if(response !=undefined){
           if(response.Boolval == true){
             this.dataList = response.data;

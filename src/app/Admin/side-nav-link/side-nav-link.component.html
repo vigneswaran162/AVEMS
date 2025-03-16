@@ -8,7 +8,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link " routerLink="EventList">Events</a>
+            <a class="nav-link ">Events</a>
           </li>
           <li class="nav-item">
             <a class="nav-link"  >Registeration </a>
@@ -23,6 +23,42 @@
             <a class="nav-link" href="contactus">Staff</a>
           </li>
         </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light px-2 py-3 shadow fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand mx-2">DASH<span>BOARD</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <button class="dropdown-item" (click)="events()">
+              Events
+            </button>
+        </li>
+          <li class="nav-item">
+            <button class="dropdown-item">Announcement</button>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Registeration List            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><button class="dropdown-item" (click)="Registerationlist('upcoming')">Upcoming</button></li>
+              <li><button class="dropdown-item" (click)="Registerationlist('Current')">Current</button></li>
+              <li><button class="dropdown-item" (click)="Registerationlist('Close')">Close</button></li>           
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#"  class="nav-link">
+             <span>Upload Events</span>
+            </a>          </li>
+        </ul>
+       
       </div>
     </div>
   </nav>

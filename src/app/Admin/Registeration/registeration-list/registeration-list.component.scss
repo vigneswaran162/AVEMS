@@ -1,39 +1,20 @@
-// .content{
-//     padding: 25px;
-// }
-
-mat-sidenav-container{
-    height: calc(100vh - 64px);
-    border: none !important;
-   
-}
-.content{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    overflow-x: hidden;
-}
-
-mat-sidenav{
-    background-color: #242424;
-} 
 
 span{
-    font-weight: lighter;
     letter-spacing: 2px;
 }
 
 
 
 h4{
+    font-size: 14px !important;
     line-height: 2px;
     font-family: "Poppins", sans-serif;
     letter-spacing: 1px;
 }
 
 .box:hover{
-    background-color: #9b59b6;
-    color: #ffff;
+    background-color: #0c2461 !important;
+    color:#fff !important;
     transition: all 0.3s ease-in;
     font-family: "Poppins", sans-serif;
 }
@@ -48,4 +29,54 @@ h4{
 span{
     font-size: 12px;
     margin: 4px;
+    font-weight: 500;
+
+}
+
+
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background:#f5f6fa !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5 !important;
+  
+  }
+  
+  .wavy span{
+    position: relative;
+    display: inline-block;
+    color: black;
+    font-size: 1.4rem;
+    animation: animate 1s ease-in-out infinite;
+    animation-delay: calc(0.1s * var(--i));
+    font-weight: 600 !important;
+    margin: 2px;
+  }
+  
+  @keyframes animate{
+    0%{
+        transform: translateY(0px);
+    }
+    20%{
+        transform: translateY(-10px);
+    }
+    40%,100%{
+        transform: translateY(0px);
+    }
+  }
+
+
+  .navbar-brand{
+    color: #0c2461;
+}
+.navbar-brand span{
+    color: #60a3bc !important;
+
 }

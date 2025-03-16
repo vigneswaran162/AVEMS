@@ -31,11 +31,15 @@ if (entity.OpsType == "S") {
   this.APIUrl = this.apiurl+'AddEvents';
 }
 else if (entity.OpsType == "U") {
-  this.APIUrl = 'http://localhost:8000/UpdateEvent';
+  this.APIUrl = this.apiurl+'UpdateEvent';
+
+  // this.APIUrl = 'http://localhost:8000/UpdateEvent';
 }
 else if (entity.OpsType == "V") {
   // this.APIUrl = 'http://localhost:3000/api/AddEvents/Delete';
-  this.APIUrl = 'http://localhost:8000/UpdateEvent';
+  this.APIUrl = this.apiurl+'UpdateEvent';
+
+  // this.APIUrl = 'http://localhost:8000/UpdateEvent';
 
 }
 let headers = new HttpHeaders({
