@@ -4,7 +4,7 @@ import { ToastNofificationService } from '../../Services/toast-nofification.serv
 import { AddEventService } from '../../Services/add-event.service';
 import { MatDialog} from '@angular/material/dialog';
 import { AddEventListComponent } from '../add-event-list/add-event-list.component';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 
@@ -14,7 +14,7 @@ import Swal from 'sweetalert2';
   styleUrl: './add-event.component.scss'
 })
 export class AddEventComponent implements OnInit {
-
+  isLoading:boolean =false
 model:AddEventModel;
 isUpdate=false
 imageSrc:any;
@@ -23,6 +23,7 @@ constructor(
   private service:AddEventService,
   public dialog:MatDialog,
   private route: ActivatedRoute,
+  private router:Router
 ){}
 ngOnInit(): void {
   this.model = new AddEventModel();
@@ -38,14 +39,16 @@ ngOnInit(): void {
 
 
 async  getById(param:any) {
+  this.isLoading = true
   let response:any = await this.service.GetById(param).catch(err=>{
-  //  this.toastr.error(err.message,this._formName)
+    this.toast.showError(err.message,'');
+  this.isLoading =false
   })
   if (response != undefined) {
    if (response.Boolval == true) {
   
        this.isUpdate = true;
-       this.model = response.data;
+       this.model = response.data[0];
 
        if (
         this.model.EventMainImage != '' &&
@@ -70,55 +73,60 @@ async  getById(param:any) {
       this.model.EventThumbnailImage = 'data:image/png;base64,' + this.model.EventThumbnailImage;
     }
   }
-    
+  this.isLoading =false
+
+   }else{
+    this.toast.showError(response.returnerror,'');
+    this.isLoading =false
+
    }
   }
 }
 
 formvalidation(){
-if(this.model.EventNo == "" || this.model.EventNo || this.model.EventNo == undefined){
-  this.toast.showError('Event No Cannot Be Blank','')
+if(this.model.EventNo == "" || this.model.EventNo ==  null || this.model.EventNo == undefined){
+  this.toast.showInfo('Event No Cannot Be Blank','')
   return false
 }
-if(this.model.EventTitle ==  "" || this.model.EventTitle || this.model.EventTitle == undefined){
-  this.toast.showError('Event Title Cannot Be Blank','')
+if(this.model.EventTitle ==  "" || this.model.EventTitle == null|| this.model.EventTitle == undefined){
+  this.toast.showInfo('Event Title Cannot Be Blank','')
   return false
 }
-if(this.model.EventDate ==  "" || this.model.EventDate || this.model.EventDate == undefined){
-  this.toast.showError('Event Date Cannot Be Blank','')
+if(this.model.EventDate ==  "" || this.model.EventDate == null || this.model.EventDate == undefined){
+  this.toast.showInfo('Event Date Cannot Be Blank','')
   return false
 }
-if(this.model.EventLastDate ==  "" || this.model.EventLastDate || this.model.EventLastDate == undefined){
-  this.toast.showError('Last Registeration Date Cannot Be Blank','')  
+if(this.model.EventLastDate ==  "" || this.model.EventLastDate == null || this.model.EventLastDate == undefined){
+  this.toast.showInfo('Last Registeration Date Cannot Be Blank','')  
   return false
 }
-if(this.model.StartTime ==  "" || this.model.StartTime || this.model.StartTime == undefined){
-  this.toast.showError('Event Start Time Cannot Be Blank','')
+if(this.model.StartTime ==  "" || this.model.StartTime == null || this.model.StartTime == undefined){
+  this.toast.showInfo('Event Start Time Cannot Be Blank','')
   return false
 }
-if(this.model.EndTime ==  "" || this.model.EndTime || this.model.EndTime == undefined){
-  this.toast.showError('Event End Time Cannot Be Blank','')
+if(this.model.EndTime ==  "" || this.model.EndTime == null || this.model.EndTime == undefined){
+  this.toast.showInfo('Event End Time Cannot Be Blank','')
   return false
 }
-if(this.model.EventThumbnailImage ==  "" || this.model.EventThumbnailImage || this.model.EventThumbnailImage == undefined){
-  this.toast.showError('Event Start Time Cannot Be Blank','')
+if(this.model.EventThumbnailImage ==  "" || this.model.EventThumbnailImage == null || this.model.EventThumbnailImage == undefined){
+  this.toast.showInfo('Event Start Time Cannot Be Blank','')
   return false
 }
-if(this.model.EventMainImage ==  "" || this.model.EventMainImage || this.model.EventMainImage == undefined){
-  this.toast.showError('Event Main Image Cannot Be Blank','')
+if(this.model.EventMainImage ==  "" || this.model.EventMainImage == null || this.model.EventMainImage == undefined){
+  this.toast.showInfo('Event Main Image Cannot Be Blank','')
   return false
 }
-if(this.model.EventSummary ==  "" || this.model.EventSummary || this.model.EventSummary == undefined){
-  this.toast.showError('Event Summary Cannot Be Blank','')
+if(this.model.EventSummary ==  "" || this.model.EventSummary == null || this.model.EventSummary == undefined){
+  this.toast.showInfo('Event Summary Cannot Be Blank','')
   return false
 }
-if(this.model.EventDetails ==  "" || this.model.EventDetails || this.model.EventDetails == undefined){
-  this.toast.showError('Event Details Cannot Be Blank','')
+if(this.model.EventDetails ==  "" || this.model.EventDetails == null || this.model.EventDetails == undefined){
+  this.toast.showInfo('Event Details Cannot Be Blank','')
   return false
 }
 
-if(this.model.Type ==  "" || this.model.Type || this.model.Type == undefined){
-  this.toast.showError('Event Status Cannot Be Blank','')
+if(this.model.Type ==  "" || this.model.Type == null || this.model.Type == undefined){
+  this.toast.showInfo('Event Status Cannot Be Blank','')
   return false
 }
 
@@ -153,9 +161,9 @@ preparemodel(){
 }
 
 
-onSubmit(){
+async onSubmit(){
 
-  // if(this.formvalidation()== true){
+  if(this.formvalidation()== true){
 
     const editmod = this.preparemodel()
     if (this.isUpdate == true) {
@@ -165,8 +173,8 @@ onSubmit(){
       editmod.CreatedBy = 'vignesh';
       editmod.OpsType = 'S';
     }
-    this.CRUD(editmod)
-  // }
+  await  this.CRUD(editmod)
+   }
  
 
 }
@@ -174,8 +182,12 @@ onSubmit(){
 
 
 async CRUD(_model:AddEventModel) {
+  this.isLoading =true
+
   let response:any = await this.service.CRUD(_model).catch((err) => {
     this.toast.showError(err.message,'');
+    this.isLoading =false
+
   });
  if(response != undefined){
   if (response.Boolval == true) {     
@@ -202,9 +214,12 @@ async CRUD(_model:AddEventModel) {
         }
       })
      }
-    
+     this.isLoading =false
+
   } else {
     this.toast.showError(response.returnerror,'');
+    this.isLoading =false
+
   }
 }
  }
@@ -263,5 +278,9 @@ openDialog() {
     }
   })
  
+}
+
+onBack(){
+  this.router.navigate(['/EventList'])
 }
 }

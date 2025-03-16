@@ -125,7 +125,7 @@ export class HomeComponent implements OnInit  {
             this.isLoading =false;
         })
         if(response != undefined){
-            this.EventDetails = response.data.filter((i:any) => i.Type == 'upcoming');
+            this.EventDetails = response.data.filter((i:any) => i.Type == 'upcoming' && i.Void != 'Y');
             this.EventDetails.forEach((event:any) => {
               if (event.EventThumbnailImage) {
                 event.EventThumbnailImage = event.EventThumbnailImage.replace(/^data:image\/(png|jpeg|jpg);base64,/, '');

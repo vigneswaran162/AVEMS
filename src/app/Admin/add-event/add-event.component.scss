@@ -19,3 +19,59 @@ label {
     font-size: 13px !important;
     font-weight: 600 !important;
 }
+
+.btn1{
+    background-color: #0c2461 !important;
+    color: #fff !important;
+}
+
+.btn2{
+    background-color: #60a3bc  !important;
+    color: #fff !important;
+}
+
+.btn3{
+    background-color: #373A3C !important;
+    color: #fff !important;
+}
+
+
+
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background:#f5f6fa !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5 !important;
+  
+  }
+  
+  .wavy span{
+    position: relative;
+    display: inline-block;
+    color: black;
+    font-size: 1.4rem;
+    animation: animate 1s ease-in-out infinite;
+    animation-delay: calc(0.1s * var(--i));
+    font-weight: 600 !important;
+    margin: 2px;
+  }
+  
+  @keyframes animate{
+    0%{
+        transform: translateY(0px);
+    }
+    20%{
+        transform: translateY(-10px);
+    }
+    40%,100%{
+        transform: translateY(0px);
+    }
+  }
+  

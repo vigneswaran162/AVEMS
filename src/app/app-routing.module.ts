@@ -8,6 +8,7 @@ import { RegisterationListComponent } from './Admin/Registeration/registeration-
 import { AboutusComponent } from './Content/aboutus/aboutus.component';
 import { ContactusComponent } from './Content/contactus/contactus.component';
 import { LatesteventsComponent } from './latestevents/latestevents.component';
+import { AddEventListComponent } from './Admin/add-event-list/add-event-list.component';
 
 const routes: Routes = [{
   path:'AddEvent/:id',
@@ -33,6 +34,10 @@ const routes: Routes = [{
 {
   path:'latest/:id',
   component:LatesteventsComponent
+},
+{
+  path:'EventList',
+  component:AddEventListComponent
 }
 ];
 

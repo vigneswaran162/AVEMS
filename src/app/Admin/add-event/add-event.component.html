@@ -1,16 +1,10 @@
-<nav class="navbar navbar-dark py-1 px-5">
-    <div class="container-fluid">
-      <span class="navbar-brand mb-0 h1">Admin DashBoard</span>
-      <button type="button" class="btn btn-secondary" (click)="openDialog()">Event List</button>
-    </div>
-  </nav>
-<div class="container-fluid">
+
+<app-side-nav-link></app-side-nav-link>
+
+<div class="container" style="margin-top: 70px !important;">
     <div class="row">
-        <div class="col-md-2">
-      <app-sidenavbar></app-sidenavbar>
-        </div>
-        <div class="col-md-10 mt-4">
-           <div class="row px-5 py-3">
+        <div class="col-md-12 mt-4">
+           <div class="row">
             <div class="col-md-3 mb-3">
                 <label class="form-label">Event No.</label>
                 <input type="email" [readonly]="isUpdate" class="form-control form-control-sm"  [(ngModel)]="model.EventNo" >
@@ -94,8 +88,10 @@
          
 
             <div class="col-md-12 d-flex align-items-center justify-content-end">
-                <button type="button" class="btn btn-outline-primary" (click)="onSubmit()">Submit</button>
-                <button type="button" class="btn btn-outline-dark" (click)="onClear()">Clear</button>
+                <button type="button" class="btn btn1" (click)="onSubmit()">Submit</button>
+                <button type="button" class="btn btn2" (click)="onClear()">Clear</button>
+                <button type="button" class="btn btn3" (click)="onBack()" >Back</button>
+
             </div>
 
 
@@ -104,6 +100,9 @@
     </div>
 </div>
 
+<div class="loading-overlay" *ngIf="isLoading" >
+  <div class="wavy"> <span style="--i:1;">L</span><span style="--i:2;">O</span><span style="--i:3;">A</span><span style="--i:4;">D</span><span style="--i:5;">I</span><span style="--i:6;">N</span><span style="--i:7;">G</span><span style="--i:8;">.</span><span style="--i:9;">.</span><span style="--i:10;">.</span></div>
+</div>
 
 <!-- Event Thumbnail Image Modal -->
   <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

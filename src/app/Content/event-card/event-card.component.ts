@@ -26,7 +26,7 @@ export class EventCardComponent implements OnInit {
       })
       if(response != undefined){
 
-          this.EventDetails = response.data.filter((i:any) => i.Type == 'Current');
+          this.EventDetails = response.data.filter((i:any) => i.Type == 'Current' && i.Void != 'Y');
           this.EventDetails.forEach((event:any) => {
             if (event.EventThumbnailImage) {
               event.EventThumbnailImage = event.EventThumbnailImage.replace(/^data:image\/(png|jpeg|jpg);base64,/, '');

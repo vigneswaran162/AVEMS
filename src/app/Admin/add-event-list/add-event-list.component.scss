@@ -1,32 +1,59 @@
-.fa-x{
-    font-size: 25px;
-    cursor: pointer;
-}
-.btn-1{
-   border: none;
-   padding:10px 15px;
-   margin: 5px;
-   border-radius: 4px;
-   background-color: rgb(39, 174, 96);
-   color: rgb(236, 240, 241);
-}
 
-.btn-2{
-    border: none;
-    padding:10px 15px;
-    margin: 5px;
-    border-radius: 4px;
-    background-color:rgb(245, 59, 87);
-    color: rgb(236, 240, 241);
- }
  table{
     width: 100%;
  }
  table th{
     font-weight: 450;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     color: black ;
+    text-transform: uppercase;
  }
  table td{
     font-weight: 400;
  }
+
+ h2{
+   font-size: 17px !important;
+ }
+
+ 
+
+ 
+
+.loading-overlay {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100vh;
+   background:#f5f6fa !important;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   z-index: 5 !important;
+ 
+ }
+ 
+ .wavy span{
+   position: relative;
+   display: inline-block;
+   color: black;
+   font-size: 1.4rem;
+   animation: animate 1s ease-in-out infinite;
+   animation-delay: calc(0.1s * var(--i));
+   font-weight: 600 !important;
+   margin: 2px;
+ }
+ 
+ @keyframes animate{
+   0%{
+       transform: translateY(0px);
+   }
+   20%{
+       transform: translateY(-10px);
+   }
+   40%,100%{
+       transform: translateY(0px);
+   }
+ }
+ 
