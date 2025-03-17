@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AddEventService } from '../../Services/add-event.service';
 declare var Swiper: any;
-
 declare var $: any;
 
 @Component({

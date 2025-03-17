@@ -21,6 +21,7 @@ export class AddEventListComponent {
   dataSource: any;
   _formName = 'EVENTS LIST'
   displayedColumns = ['itemname','uom','rate','EventType','price','actions'];
+  // @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild('searchInput', { static: true }) searchInput: ElementRef;
