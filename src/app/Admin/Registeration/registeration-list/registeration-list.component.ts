@@ -1,7 +1,7 @@
 import { Component, computed, OnInit, signal } from '@angular/core';
 import { AddEventService } from '../../../Services/add-event.service';
 import { ToastNofificationService } from '../../../Services/toast-nofification.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-registeration-list',
@@ -15,22 +15,23 @@ export class RegisterationListComponent  implements OnInit {
   _formName=''
   isLoading:boolean=false;
   isNoData:boolean =false;
+  Type:string=''
   constructor (
     private toastr:ToastNofificationService,
     private service:AddEventService,
-    private route:ActivatedRoute
+    private route:ActivatedRoute,
+    private router:Router
   ){}
-  ngOnInit(): void {
+  async ngOnInit() {
 
-    const param = this.route.snapshot.paramMap.get('id');
-    if (param != "0" && param != null && param != undefined) {
-      this.LoadList(param)
-    }
+    this.Type= 'upcoming'  
+    await this.LoadList()
+    
 
 
   }
 
-  async LoadList(param:any){
+  async LoadList(){
     this.isLoading =true
     let response:any = await this.service.GetAll().catch(err=>{
         this.toastr.showError(err.returnerror,this._formName)
@@ -40,14 +41,24 @@ export class RegisterationListComponent  implements OnInit {
         if(response.Boolval == true){
          if(response.data.length > 0){
           this.isNoData = false;   
-          this.dataList = response.data.filter((i:any)=>i.Type== param)
+          this.dataList = response.data.filter((i:any)=>i.Type== this.Type)
+          if(this.dataList.length == 0){
+            this.isNoData = true;
+          }
           this.isLoading = false
          }else{
-          this.isNoData = true;
          }
 
         
         }
       }
+    }
+
+    OnChange(){
+      this.LoadList()
+    }
+
+    NavigationList(Type:any){
+      this.router.navigate(['RegisterationList',Type])
     }
 }

@@ -1,0 +1,36 @@
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background:#f5f6fa !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5 !important;
+  
+  }
+  
+  .wavy span{
+    position: relative;
+    display: inline-block;
+    color: black;
+    font-size: 1.4rem;
+    animation: animate 1s ease-in-out infinite;
+    animation-delay: calc(0.1s * var(--i));
+    font-weight: 600 !important;
+    margin: 2px;
+  }
+  
+  @keyframes animate{
+    0%{
+        transform: translateY(0px);
+    }
+    20%{
+        transform: translateY(-10px);
+    }
+    40%,100%{
+        transform: translateY(0px);
+    }
+  }

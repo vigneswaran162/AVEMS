@@ -30,6 +30,7 @@ import { FooterComponent } from './Content/footer/footer.component';
 import { LatesteventsComponent } from './latestevents/latestevents.component';
 import { AboutusComponent } from './Content/aboutus/aboutus.component';
 import { ContactusComponent } from './Content/contactus/contactus.component';
+import { RegisterstiondataComponent } from './Admin/registeration-list/registerstiondata/registerstiondata.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { ContactusComponent } from './Content/contactus/contactus.component';
     FooterComponent,
     LatesteventsComponent,
     AboutusComponent,
-    ContactusComponent
+    ContactusComponent,
+    RegisterstiondataComponent
   ],
   imports: [
     BrowserModule,

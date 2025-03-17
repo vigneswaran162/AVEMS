@@ -15,9 +15,9 @@ export class SideNavLinkComponent {
     this.router.navigate(['/EventList'], { relativeTo: this.route });
 
   }
-  Registerationlist(id: any): void {
+  Registerationlist(): void {
     // window.location.reload();  
 
-    this.router.navigate(['/Regiseration',id], { relativeTo: this.route });
+    this.router.navigate(['/Registeration'], { relativeTo: this.route });
   }
 }

@@ -10,6 +10,7 @@ h4{
     line-height: 2px;
     font-family: "Poppins", sans-serif;
     letter-spacing: 1px;
+    text-transform: uppercase !important;
 }
 
 .box:hover{
@@ -79,4 +80,14 @@ span{
 .navbar-brand span{
     color: #60a3bc !important;
 
+}
+
+h5{
+  color: #0c2461 !important;
+  font-weight: 600;
+  text-transform: uppercase !important;
+
+}
+h5 a{
+  color: #60a3bc !important;
 }
