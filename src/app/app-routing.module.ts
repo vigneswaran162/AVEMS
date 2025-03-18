@@ -10,6 +10,7 @@ import { LatesteventsComponent } from './latestevents/latestevents.component';
 import { AddEventListComponent } from './Admin/add-event-list/add-event-list.component';
 import { RegisterstiondataComponent } from './Admin/registeration-list/registerstiondata/registerstiondata.component';
 import { RegisterationListComponent } from './Admin/Registeration/registeration-list/registeration-list.component';
+import { EventUploadComponent } from './Admin/event-upload/event-upload.component';
 
 const routes: Routes = [{
   path:'AddEvent/:id',
@@ -47,6 +48,10 @@ const routes: Routes = [{
 {
   path:'RegisterationList/:id',
   component:RegisterstiondataComponent
+},
+{
+  path:'EventUpload',
+  component:EventUploadComponent
 }
 ];
 

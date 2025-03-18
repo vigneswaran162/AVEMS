@@ -18,3 +18,11 @@ export class AddEventModel{
     CreatedBy:string;
     Type:string;
 }
+
+export class AddFolderModel{
+    EventNo:string;
+    YearName:string;
+    Type:string;
+    Void:string;
+
+}

@@ -54,4 +54,33 @@ return res;
 }
 
 
+
+
+
+async GetFolder(): Promise<any> {
+  this.APIUrl = this.apiurl+'GetFolder';
+  let res = await this.http.get(this.APIUrl).toPromise()
+  return res
+}
+
+
+async CREATEFOLDER (entity:any): Promise<any> {
+
+    this.APIUrl = this.apiurl+'AddFolder';
+  
+    // this.APIUrl = 'http://localhost:8000/AddFolder';
+  
+
+  let headers = new HttpHeaders({
+    'content-Type': 'application/json',
+    Accept: 'application/json',
+  });
+  let options = {
+    headers: headers,
+  };
+  let res = await this.http.post(this.APIUrl, entity, options).toPromise()
+  return res;
+  }
+
+
 }

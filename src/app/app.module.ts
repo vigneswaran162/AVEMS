@@ -31,7 +31,10 @@ import { LatesteventsComponent } from './latestevents/latestevents.component';
 import { AboutusComponent } from './Content/aboutus/aboutus.component';
 import { ContactusComponent } from './Content/contactus/contactus.component';
 import { RegisterstiondataComponent } from './Admin/registeration-list/registerstiondata/registerstiondata.component';
-
+import { EventUploadComponent } from './Admin/event-upload/event-upload.component';
+import {provideNativeDateAdapter} from '@angular/material/core';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -49,7 +52,8 @@ import { RegisterstiondataComponent } from './Admin/registeration-list/registers
     LatesteventsComponent,
     AboutusComponent,
     ContactusComponent,
-    RegisterstiondataComponent
+    RegisterstiondataComponent,
+    EventUploadComponent
   ],
   imports: [
     BrowserModule,
@@ -71,8 +75,9 @@ import { RegisterstiondataComponent } from './Admin/registeration-list/registers
     MatFormFieldModule,
     MatSidenavModule,
     MatToolbarModule,
-    MatIconModule
-    
+    MatIconModule,
+    MatDatepickerModule  ,
+    ReactiveFormsModule
   ],
   providers: [
     provideClientHydration(),

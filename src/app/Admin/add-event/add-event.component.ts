@@ -161,9 +161,10 @@ preparemodel(){
 }
 
 
-async onSubmit(){
+async onSubmit(event:any){
 
   if(this.formvalidation()== true){
+    event.target.disabled = true;
 
     const editmod = this.preparemodel()
     if (this.isUpdate == true) {
@@ -174,6 +175,8 @@ async onSubmit(){
       editmod.OpsType = 'S';
     }
   await  this.CRUD(editmod)
+  event.target.disabled = false;
+
    }
  
 

@@ -1,0 +1,144 @@
+.year-only::-webkit-datetime-edit-month-field, 
+.year-only::-webkit-datetime-edit-day-field {
+  display: none;
+}
+.year-only::-webkit-inner-spin-button, 
+.year-only::-webkit-calendar-picker-indicator {
+  display: block;
+}
+$width: 150px;
+$angle: -35deg;
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.folder h6 {
+    position: relative;
+    z-index: 10; 
+    color: #d9e1e3 !important;
+    text-align: center;
+    font-weight: 700 !important;
+    letter-spacing: 1px !important;
+    font-size: 24px !important;
+  }
+label {
+  cursor: pointer;
+}
+
+
+
+.folder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;   
+//   position: relative;
+  width: $width;
+  height: calc(#{$width} / 100 * 75);
+  perspective: $width * 5;
+}
+
+.navbar-brand{
+    color: #0c2461;
+}
+.navbar-brand span{
+    color: #60a3bc !important;
+
+}
+
+.folder span::before,
+.folder span::after,
+.folder::before,
+.folder::after {
+  position: absolute;
+  content: "";
+  border-radius: calc(#{$width} / 100 * 5);
+}
+
+.folder::before {
+  width: 100%;
+  height: 92%;
+  bottom: 0;
+ background-color:#0c2461;
+}
+
+.folder span::after {
+  width: 90%;
+  height: 85%;
+  bottom: 0;
+  left: 5%;
+  background-color: #fff;
+  z-index: 2;
+  transition: transform 250ms ease 0ms;
+  transform: translate3d(0px, 0px, 0px);
+}
+
+.folder span::before {
+    background-color:#0c2461;
+    width: 100%;
+  height: 92%;
+  bottom: 0;
+  left: 0;
+  z-index: 3;
+  content: '';
+  transition: transform 500ms ease 0ms;
+  transform-origin: 0 100% 0;
+  outline: 1px solid transparent; /* Firefox anti-aliasing hack */  
+  transform-style: preserve-3d;
+  @include flex-center;
+}
+
+.folder::after {
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 50%;
+  background-color:#0c2461;
+  z-index: 1;
+}
+
+.folder input:checked + span::before {
+  transform: rotateX( $angle);
+}
+
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background:#f5f6fa !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5 !important;
+  
+  }
+  
+  .wavy span{
+    position: relative;
+    display: inline-block;
+    color: black;
+    font-size: 1.4rem;
+    animation: animate 1s ease-in-out infinite;
+    animation-delay: calc(0.1s * var(--i));
+    font-weight: 600 !important;
+    margin: 2px;
+  }
+  
+  @keyframes animate{
+    0%{
+        transform: translateY(0px);
+    }
+    20%{
+        transform: translateY(-10px);
+    }
+    40%,100%{
+        transform: translateY(0px);
+    }
+  }
+  

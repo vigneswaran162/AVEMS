@@ -9,8 +9,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class SideNavLinkComponent {
 
   constructor (private route:ActivatedRoute,private router:Router){}
-
-
+  EventUpload(){
+    this.router.navigate(['/EventUpload'], { relativeTo: this.route });
+  }
+  
   events(){
     this.router.navigate(['/EventList'], { relativeTo: this.route });
 

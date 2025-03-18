@@ -1,0 +1,44 @@
+
+<app-side-nav-link></app-side-nav-link>
+<div class="container" style="margin-top: 80px !important;">
+   <div class="row">
+    <div class="col-md-3 mb-4">
+        <button class="btn-dark btn btn-sm"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">CREATE FOLDER</button>
+    </div>
+    <div class="col-md-12 d-flex align-items-center justify-content-start gap-4">
+        <label class="folder"  *ngFor="let row of dataList">
+            <input type="checkbox"/>
+            <span></span>
+            <h6 class="m-1">{{row.YearName}}</h6>
+          </label>
+    </div>
+
+   </div>
+</div>
+<div class="loading-overlay" *ngIf="isLoading" >
+  <div class="wavy"> <span style="--i:1;">L</span><span style="--i:2;">O</span><span style="--i:3;">A</span><span style="--i:4;">D</span><span style="--i:5;">I</span><span style="--i:6;">N</span><span style="--i:7;">G</span><span style="--i:8;">.</span><span style="--i:9;">.</span><span style="--i:10;">.</span></div>
+</div>
+
+
+
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">CREATE FOLDER</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <input type="date" [(ngModel)]="selectedDate" class="form-control form-control-sm" (change)="getYear()" class="year-only" />
+            <h6>Selected Year: {{ year }}</h6>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">CLOSE</button>
+          <button type="button" class="btn btn-dark btn-sm" (click)="CREATEFOLDER($event)">SUBMIT</button>
+        </div>
+      </div>
+    </div>
+  </div>
