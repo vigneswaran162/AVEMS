@@ -2,18 +2,15 @@
      <app-side-nav-link></app-side-nav-link>
 
      
-<div class="container">
-    <div class="row gap-3 d-flex align-items-center justify-content-center" style="margin-top: 120px !important;">
+<div class="container page-offset">
+    <div class="row">
 
-        <div class="col-md-12 mb-3">
-            <div class="row">
-                <div class="col-md-6">
+        <div class="col-12 mb-4">
+            <div class="row head-row">
+                <div class="col-md-6 col-12">
                    <h5>{{Type}} <a>Event</a> List</h5>
                 </div>
-                <div class="col-md-4">
-
-                </div>
-                <div class="col-md-2">
+                <div class="col-md-3 offset-md-3 col-12">
                     <select class="form-select form-control-sm" aria-label="Default select example"  [(ngModel)]="Type" (change)="OnChange()">
                         <option selected>Open this select menu</option>
                         <option value="upcoming">upcoming</option>
@@ -25,16 +22,25 @@
             </div>
         </div>
            
-        <div  (click)="NavigationList(row.EventNo)" class="col-md-3 d-flex align-items-center justify-content-start shadow  py-3 px-2 box" style="border-radius: 10px;cursor: pointer;"  *ngFor="let row of dataList;">
-              <img src="" alt="" style="width: 60px;">
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3 box-col" *ngFor="let row of dataList;">
+          <div (click)="NavigationList(row.EventNo)" class="box">
             <div class="text-content">
                 <h4>{{row.EventTitle}}</h4>
-                <span>{{row.EventType}}</span> <span>{{row.EventDate | date:'dd-MM-yyyy'}}</span>
+                <div class="meta"><span class="type">{{row.EventType}}</span> <span>{{row.EventDate | date:'dd-MM-yyyy'}}</span></div>
             </div>
+            <i class="fa-solid fa-chevron-right chev" aria-hidden="true"></i>
+          </div>
         </div>
 
-        <div class="col-md-10 d-flex align-items-center justify-content-center" *ngIf="isNoData" >
-            <img src="../assets/nodata.gif" class="img-fluid">
+        <div class="col-12 d-flex align-items-center justify-content-center empty-state" *ngIf="isNoData" >
+            <div class="empty-card">
+              <div class="empty-icon" aria-hidden="true">
+                <span class="ring"></span><span class="ring r2"></span>
+                <i class="fa-regular fa-calendar-xmark"></i>
+              </div>
+              <h6>No {{Type}} events found</h6>
+              <p>There is nothing to show here yet. Try a different status from the filter above.</p>
+            </div>
         </div>
      </div>
 </div>

@@ -1,77 +1,29 @@
-button{
-    margin: 10px;
-    letter-spacing: 1px;
-    padding: 6px 30px;
-    border-radius: 20px;
+.form-card {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sm);
+  padding: clamp(1rem, 3vw, 2rem) clamp(0.5rem, 2vw, 1.25rem);
+  margin: 0;
+  row-gap: var(--s-4);
+  animation: slideUp 0.5s var(--ease) both;
 }
-nav{
-    background-color: #373A3C !important;
+.form-grid > [class*='col-'] { margin-bottom: 0 !important; }
+
+label { display: block; }
+.input-group-text { font-size: 1.05rem; cursor: pointer; }
+.modal-body img { width: 100%; max-width: 480px; height: auto; border-radius: var(--r-md); }
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--s-3);
+  margin-top: var(--s-3);
+  padding-top: var(--s-4);
+  border-top: 1px solid var(--c-border);
+  .btn { margin: 0; min-width: 110px; }
 }
-
-.input-group-text{
-    font-size: 18px;
-    cursor: pointer;
+@media (max-width: 575.98px) {
+  .form-actions { flex-direction: column; .btn { width: 100%; } }
 }
-img{
-    width: 400px;
-}
-label {
-    font-size: 13px !important;
-    font-weight: 600 !important;
-}
-
-.btn1{
-    background-color: #0c2461 !important;
-    color: #fff !important;
-}
-
-.btn2{
-    background-color: #60a3bc  !important;
-    color: #fff !important;
-}
-
-.btn3{
-    background-color: #373A3C !important;
-    color: #fff !important;
-}
-
-
-
-
-.loading-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background:#f5f6fa !important;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 5 !important;
-  
-  }
-  
-  .wavy span{
-    position: relative;
-    display: inline-block;
-    color: black;
-    font-size: 1.4rem;
-    animation: animate 1s ease-in-out infinite;
-    animation-delay: calc(0.1s * var(--i));
-    font-weight: 600 !important;
-    margin: 2px;
-  }
-  
-  @keyframes animate{
-    0%{
-        transform: translateY(0px);
-    }
-    20%{
-        transform: translateY(-10px);
-    }
-    40%,100%{
-        transform: translateY(0px);
-    }
-  }
-  

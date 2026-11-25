@@ -11,10 +11,14 @@ import { AddEventListComponent } from './Admin/add-event-list/add-event-list.com
 import { RegisterstiondataComponent } from './Admin/registeration-list/registerstiondata/registerstiondata.component';
 import { RegisterationListComponent } from './Admin/Registeration/registeration-list/registeration-list.component';
 import { EventUploadComponent } from './Admin/event-upload/event-upload.component';
+import { AnnouncementComponent } from './Admin/announcement/announcement.component';
+import { AdminLoginComponent } from './Admin/admin-login/admin-login.component';
+import { adminGuard } from './Services/auth.guard';
 
 const routes: Routes = [{
   path:'AddEvent/:id',
   component:AddEventComponent,
+  canActivate:[adminGuard]
 },{
   path:'Events',
   component:EventCardComponent
@@ -39,19 +43,32 @@ const routes: Routes = [{
 },
 {
   path:'EventList',
-  component:AddEventListComponent
+  component:AddEventListComponent,
+  canActivate:[adminGuard]
 },
 {
   path:'Registeration',
-  component:RegisterationListComponent
+  component:RegisterationListComponent,
+  canActivate:[adminGuard]
 },
 {
   path:'RegisterationList/:id',
-  component:RegisterstiondataComponent
+  component:RegisterstiondataComponent,
+  canActivate:[adminGuard]
 },
 {
   path:'EventUpload',
-  component:EventUploadComponent
+  component:EventUploadComponent,
+  canActivate:[adminGuard]
+},
+{
+  path:'Announcement',
+  component:AnnouncementComponent,
+  canActivate:[adminGuard]
+},
+{
+  path:'AdminLogin',
+  component:AdminLoginComponent
 }
 ];
 

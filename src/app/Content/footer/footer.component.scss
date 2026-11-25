@@ -1,110 +1,89 @@
-footer{
-    width: 100%;
-    height: auto;
-    background-color: #2D334A;
-    color: #FFFF;
+footer {
+  width: 100%;
+  margin-top: var(--s-7);
+  background: linear-gradient(180deg, #14213d 0%, #0d1730 100%);
+  color: #cbd5e1;
+  font-size: var(--fs-sm);
 }
-footer span{
-    margin-bottom: 10px;
-    padding-bottom: 20px;
-}
-footer a{
-   font-size: 14px;
-   font-weight: 600;
-    margin: 0;
-    color: #95D1CC !important;
-   
-}
-footer span{
-    color: gray;
-    cursor: pointer;
-}
-footer .clg{
-    padding: 10px;
+.container { padding-top: var(--s-7); padding-bottom: var(--s-5); }
 
+.row { row-gap: var(--s-6); }
+
+footer h3 {
+  margin: 0 0 var(--s-1);
+  color: #fff;
+  font-size: var(--fs-h2);
+  font-weight: 800;
+  letter-spacing: 0.12em;
 }
-footer address{
-    padding: 10px;
+footer .clg a { color: var(--c-accent); font-weight: 600; letter-spacing: 0.08em; font-size: var(--fs-xs); }
+footer .clg { margin-bottom: var(--s-3); }
+
+footer address { color: #94a3b8; line-height: 1.7; margin-bottom: var(--s-3); }
+
+footer span {
+  display: inline-block;
+  color: #94a3b8;
+  margin-bottom: var(--s-2);
+  word-break: break-word;
 }
-footer h3{
-     line-height: 2px;
-    margin: 0;
-    padding: 0;
-    margin-bottom: 6px;
-    letter-spacing: 3px;
+footer span i { color: var(--c-accent); width: 28px; text-align: center; }
+
+footer h4 {
+  position: relative;
+  color: #fff;
+  font-size: var(--fs-base);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0 0 var(--s-4);
+  padding-bottom: var(--s-3);
+  border: 0;
+  width: auto;
 }
-footer i{
-    color: #95D1CC;
-    padding: 10px;
-}
-footer ul li{
-    list-style-type: none;
-    margin-bottom: 5px;
-}
-footer li .link{
-    text-decoration: none;
-    font-size: 18px;
-    text-transform: capitalize;
-    font-weight: 600;
-    color: gray  !important;
-    
-    
-}
-footer  .link:hover{
-    color: #ffff !important;
-  
-    
-}
-footer h4{
-    letter-spacing: 1px;
-    border-bottom: 4px solid #95D1CC;
-    width: 160px;
-    padding-bottom: 4px;
-}
-footer .social-link{
-    padding-top:10px ;
-}
-footer .social-link i{
-      padding: 10px;
-      font-size: 20px;
-      margin: 5px;
-      border: 1px solid gray !important;
-      color:grey !important;
-      border-radius: 50px;
-      cursor: pointer;
+footer .line { display: none; }
+footer h4::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 36px;
+  height: 3px;
+  border-radius: var(--r-pill);
+  background: var(--c-accent);
 }
 
-footer .social-link i:hover{
-    background-color: #ffff !important;
-    color: #006E7F !important;
-    border: none !important;
+footer ul { padding: 0; margin: 0; }
+footer ul li { list-style: none; margin-bottom: var(--s-2); }
+footer ul li i { color: var(--c-accent); font-size: 0.7rem; padding-right: var(--s-2); }
+footer li .link {
+  text-decoration: none;
+  text-transform: capitalize;
+  font-weight: 500;
+  color: #94a3b8 !important;
+  transition: color 0.15s ease, padding-left 0.2s ease;
 }
+footer li .link:hover { color: #fff !important; padding-left: 4px; }
 
-
-
-@media screen and (max-width: 600px) {
-    h3{
-        font-size: 14px !important;
-    }
-    a{
-        font-size: 10px !important;
-    }
-    address{
-        font-size: 10px !important;
-    }
-    span{
-        font-size: 10px !important;
-    }
-    h4{
-        font-size: 14px !important;
-    }
-    footer h4{
-        letter-spacing: 1px;
-        border-bottom: 2px solid #95D1CC;
-        width: 110px;
-        padding-bottom: 2px;
-    }
-    p{
-        font-size: 10px !important;
-    }
+footer .social-link { display: flex; flex-wrap: wrap; gap: var(--s-3); }
+footer .social-link i {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  font-size: 1rem;
+  color: #cbd5e1;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
 }
+footer .social-link i:hover { background: #fff; color: var(--c-primary); transform: translateY(-3px); }
+
+.col-md-12.pt-4 {
+  margin-top: var(--s-3);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+footer p { margin: 0; color: #94a3b8; text-align: center; font-size: var(--fs-xs); }
+footer p i { color: inherit; padding: 0 4px; }

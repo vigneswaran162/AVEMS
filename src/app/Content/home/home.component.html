@@ -1,8 +1,8 @@
 <app-navbar></app-navbar>
 
-<div class="container my-5">
-  <div class="row">
-    <div class="col-md-12 mt-5">
+<div class="container page-offset">
+  <div class="row page-sections">
+    <div class="col-12 hero">
       <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
           <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
@@ -67,9 +67,9 @@
       </div>
     </div>
 
-    <div class="col-md-12 bg-light p-5 shadow">
+    <div class="col-12 section-card">
       <div class="row">
-        <div class="col-md-5 col-sm-12">
+        <div class="col-lg-5 col-12 announce-col">
           <h3>EVENT <span>ANNOUNCEMENT</span></h3>
           <div class="swiper">
             <div class="swiper-wrapper">
@@ -121,30 +121,30 @@
           </div>
         </div>
 
-        <div class="col-md-7">
+        <div class="col-lg-7 col-12">
           <h3>UPCOMING <span>EVENTS</span></h3>
-          <div class="row px-2" style="height: 65vh;overflow-y:scroll;">
-            <div class="col-md-11">
+          <div class="event-scroll">
+            <div class="event-list">
         
 
 
              
             
            
-              <div class="swiper-slide mb-3 d-flex align-items-center justify-content-center" style="height: 20vh;"  *ngFor="let row of EventDetails">
-                <div class="img-box" style="width:30%;">
+              <div class="swiper-slide event-item"  *ngFor="let row of EventDetails">
+                <div class="img-box">
                   <img [src]="row.EventThumbnailImage" class="img-fluid" alt="">
 
                 </div>
-                <div class="box-contain" style="width:70%;">
+                <div class="box-contain">
                   <h6>{{row.EventTitle}}</h6>
-                  <span class="badge bg-blue mx-2">{{row.EventType}}</span> <span class="date"> <i class="fa fa-calendar"
+                  <span class="badge bg-blue">{{row.EventType}}</span> <span class="date"> <i class="fa fa-calendar"
                       aria-hidden="true"></i> {{row.EventDate | date: 'dd/MM/yyyy'}}</span>
-                  <p class="m-1">
+                  <p class="event-blurb">
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate minus eos earum quae
                     placeat
                   </p>
-                  <button class="m-1 register-btn" (click)="EventDetail(row)">VIEW REGISTER</button>
+                  <button class="register-btn" (click)="EventDetail(row)">VIEW REGISTER</button>
                 </div>
               </div>
 
@@ -157,14 +157,14 @@
     </div>
 
 
-    <div class="col-md-12 bg-light p-5 shadow mt-5">
+    <div class="col-12 section-card">
       <h3>LATEST <span>ANNOUNCEMENT</span></h3>
       <div class="row">
         <div class="swiper swiper1">
           <div class="swiper-wrapper">
             
             <div class="swiper-slide swiper-slide1">
-              <div class="card" style="width:25rem;">
+              <div class="card">
                 <img src="../assets/speech.svg" class="card-img-top latest-img" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">MUSIC <span>CONCEPTS</span></h5>
@@ -177,7 +177,7 @@
             </div>
 
             <div class="swiper-slide swiper-slide1">
-              <div class="card" style="width:25rem;">
+              <div class="card">
                 <img src="../assets/stage.svg" class="card-img-top latest-img" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">MUSIC <span>CONCEPTS</span></h5>
@@ -189,7 +189,7 @@
               </div>
             </div>
             <div class="swiper-slide swiper-slide1">
-              <div class="card" style="width:25rem;">
+              <div class="card">
                 <img src="../assets/party.svg" class="card-img-top latest-img" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">MUSIC <span>CONCEPTS</span></h5>
@@ -201,7 +201,7 @@
               </div>
             </div>
             <div class="swiper-slide swiper-slide1">
-              <div class="card" style="width:25rem;">
+              <div class="card">
                 <img src="../assets/music.jpg" class="card-img-top latest-img" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">MUSIC <span>CONCEPTS</span></h5>
@@ -214,7 +214,7 @@
             </div>
             
             <div class="swiper-slide swiper-slide1">
-              <div class="card" style="width:25rem;">
+              <div class="card">
                 <img src="../assets/en.jpeg" class="card-img-top latest-img" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">MUSIC <span>CONCEPTS</span></h5>

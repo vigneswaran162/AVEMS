@@ -1,93 +1,93 @@
-
-span{
-    letter-spacing: 2px;
+.head-row { row-gap: var(--s-3); align-items: center; }
+h5 {
+  margin: 0;
+  font-size: var(--fs-h2);
+  font-weight: 800;
+  text-transform: capitalize;
+  color: var(--c-ink);
+  a { color: var(--c-accent); text-decoration: none; }
 }
 
+.box-col { margin-bottom: var(--s-4); animation: slideUp 0.5s var(--ease) both; }
 
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+  height: 100%;
+  padding: var(--s-4);
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-left: 4px solid var(--c-accent);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), background 0.25s var(--ease), border-color 0.25s var(--ease);
 
-h4{
-    font-size: 14px !important;
-    line-height: 2px;
-    font-family: "Poppins", sans-serif;
-    letter-spacing: 1px;
-    text-transform: uppercase !important;
-}
-
-.box:hover{
-    background-color: #0c2461 !important;
-    color:#fff !important;
-    transition: all 0.3s ease-in;
-    font-family: "Poppins", sans-serif;
-}
-.box:hover span{
-  font-weight: 500;
-}
-.box:hover h4{
-    font-weight: 500;
-    letter-spacing: 1px;
+  &:hover {
+    background: var(--c-primary);
+    border-color: var(--c-primary);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+    h4 { color: #fff; }
+    .meta span { color: rgba(255, 255, 255, 0.8); }
+    .type { background: rgba(255, 255, 255, 0.16); color: #fff; }
+    .chev { color: #fff; transform: translateX(3px); }
   }
-
-span{
-    font-size: 12px;
-    margin: 4px;
-    font-weight: 500;
-
 }
+.text-content { min-width: 0; }
+h4 {
+  margin: 0 0 var(--s-2);
+  font-size: var(--fs-base);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.35;
+  color: var(--c-ink);
+  overflow-wrap: anywhere;
+  transition: color 0.25s var(--ease);
+}
+.meta { display: flex; flex-wrap: wrap; gap: var(--s-2); }
+.meta span { margin: 0; font-size: var(--fs-xs); font-weight: 500; color: var(--c-muted); transition: color 0.25s var(--ease); }
+.type { background: var(--c-primary-50); color: var(--c-primary) !important; padding: 0.15em 0.7em; border-radius: var(--r-pill); font-weight: 600 !important; }
+.chev { color: var(--c-muted); font-size: 0.85rem; transition: transform 0.25s var(--ease), color 0.25s var(--ease); }
 
 
-
-.loading-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background:#f5f6fa !important;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 5 !important;
-  
+.empty-card {
+  width: min(100%, 420px);
+  margin-top: var(--s-6);
+  padding: var(--s-7) var(--s-5);
+  text-align: center;
+  background: var(--c-surface);
+  border: 1px dashed #cbd5e1;
+  border-radius: var(--r-lg);
+  animation: slideUp 0.5s var(--ease) both;
+  h6 { margin: var(--s-4) 0 var(--s-2); font-size: var(--fs-h3); font-weight: 700; color: var(--c-ink); text-transform: capitalize; }
+  p { margin: 0; font-size: var(--fs-sm); }
+}
+.empty-icon {
+  position: relative;
+  width: 88px;
+  height: 88px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--c-primary-50);
+  color: var(--c-primary);
+  font-size: 2rem;
+  i { position: relative; z-index: 1; animation: float 3s ease-in-out infinite; }
+  .ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 2px solid var(--c-accent);
+    opacity: 0;
+    animation: pulse 2.4s ease-out infinite;
   }
-  
-  .wavy span{
-    position: relative;
-    display: inline-block;
-    color: black;
-    font-size: 1.4rem;
-    animation: animate 1s ease-in-out infinite;
-    animation-delay: calc(0.1s * var(--i));
-    font-weight: 600 !important;
-    margin: 2px;
-  }
-  
-  @keyframes animate{
-    0%{
-        transform: translateY(0px);
-    }
-    20%{
-        transform: translateY(-10px);
-    }
-    40%,100%{
-        transform: translateY(0px);
-    }
-  }
-
-
-  .navbar-brand{
-    color: #0c2461;
+  .r2 { animation-delay: 1.2s; }
 }
-.navbar-brand span{
-    color: #60a3bc !important;
-
-}
-
-h5{
-  color: #0c2461 !important;
-  font-weight: 600;
-  text-transform: uppercase !important;
-
-}
-h5 a{
-  color: #60a3bc !important;
-}
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+@keyframes pulse { 0% { transform: scale(0.9); opacity: 0.55; } 100% { transform: scale(1.6); opacity: 0; } }

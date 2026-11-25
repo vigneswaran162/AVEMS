@@ -7,7 +7,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class AddEventService {
   private APIUrl: string;
 
-  private apiurl:string = 'https://backendvercel-brown.vercel.app/'
+  // private apiurl:string = 'https://backendvercel-brown.vercel.app/'
+  private apiurl:string = 'http://localhost:8000/'
 
   constructor(private http:HttpClient) { }
 
@@ -82,5 +83,24 @@ async CREATEFOLDER (entity:any): Promise<any> {
   return res;
   }
 
+
+
+async GetYearEvents(yearName:string): Promise<any> {
+  this.APIUrl = this.apiurl+'GetYearEvents?YearName='+encodeURIComponent(yearName);
+  let res = await this.http.get(this.APIUrl).toPromise()
+  return res
+}
+
+async AddYearEvent(entity:any): Promise<any> {
+  this.APIUrl = this.apiurl+'AddYearEvent';
+  let res = await this.http.post(this.APIUrl, entity).toPromise()
+  return res;
+}
+
+async VoidYearEvent(id:string): Promise<any> {
+  this.APIUrl = this.apiurl+'VoidYearEvent';
+  let res = await this.http.post(this.APIUrl, {id}).toPromise()
+  return res;
+}
 
 }

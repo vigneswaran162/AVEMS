@@ -1,20 +1,7 @@
-nav a{
-    color: #302e2e !important;
-    font-size: 15px;
-    font-weight: 500;
-  
-}
-nav a:hover{
-    color: #60a3bc !important;
-}
 .navbar-brand {
-    font-weight: 600 !important;
+  font-weight: 800;
+  color: var(--c-ink);
+  span { color: var(--c-accent); }
 }
 
-.navbar-brand{
-    color: #0c2461;
-}
-.navbar-brand span{
-    color: #60a3bc !important;
-
-}
+.logout-btn { color: var(--c-danger) !important; &:hover { background: var(--c-danger-50) !important; color: var(--c-danger) !important; } }

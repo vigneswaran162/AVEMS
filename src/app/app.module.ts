@@ -5,7 +5,8 @@ import { AppComponent } from './app.component';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from  '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from  '@angular/common/http';
+import { AuthInterceptor } from './Services/auth.interceptor';
 import { AddEventComponent } from './Admin/add-event/add-event.component';
 import { SidenavbarComponent } from './sidenavbar/sidenavbar.component';
 import { ToastrModule } from 'ngx-toastr';
@@ -35,6 +36,8 @@ import { EventUploadComponent } from './Admin/event-upload/event-upload.componen
 import {provideNativeDateAdapter} from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AnnouncementComponent } from './Admin/announcement/announcement.component';
+import { AdminLoginComponent } from './Admin/admin-login/admin-login.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +56,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     AboutusComponent,
     ContactusComponent,
     RegisterstiondataComponent,
-    EventUploadComponent
+    EventUploadComponent,
+    AnnouncementComponent,
+    AdminLoginComponent
   ],
   imports: [
     BrowserModule,
@@ -81,7 +86,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   providers: [
     provideClientHydration(),
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

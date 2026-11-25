@@ -8,7 +8,8 @@ export class RegisterationEventService {
 
   private APIUrl: string;
 
-  private apiurl:string = 'https://backendvercel-brown.vercel.app/'
+  // private apiurl:string = 'https://backendvercel-brown.vercel.app/'
+   private apiurl:string = 'http://localhost:8000/'
 
 
 
