@@ -14,6 +14,8 @@ import { EventUploadComponent } from './Admin/event-upload/event-upload.componen
 import { AnnouncementComponent } from './Admin/announcement/announcement.component';
 import { AdminLoginComponent } from './Admin/admin-login/admin-login.component';
 import { adminGuard } from './Services/auth.guard';
+import { DashboardComponent } from './Admin/dashboard/dashboard.component';
+import { CheckinComponent } from './Admin/checkin/checkin.component';
 
 const routes: Routes = [{
   path:'AddEvent/:id',
@@ -69,6 +71,16 @@ const routes: Routes = [{
 {
   path:'AdminLogin',
   component:AdminLoginComponent
+},
+{
+  path:'Dashboard',
+  component:DashboardComponent,
+  canActivate:[adminGuard]
+},
+{
+  path:'CheckIn',
+  component:CheckinComponent,
+  canActivate:[adminGuard]
 }
 ];
 

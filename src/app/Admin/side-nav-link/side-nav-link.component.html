@@ -10,6 +10,9 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item">
+            <button class="dropdown-item" (click)="Dashboard()">Dashboard</button>
+          </li>
+          <li class="nav-item">
             <button class="dropdown-item" (click)="events()">
               Events
             </button>
@@ -31,6 +34,9 @@
 
 
                  </li>
+          <li class="nav-item">
+            <button class="dropdown-item" (click)="CheckIn()">Check-in</button>
+          </li>
           <li class="nav-item">
             <button class="dropdown-item logout-btn" (click)="logout()"><i class="fa-solid fa-right-from-bracket" aria-hidden="true"></i> Logout</button>
           </li>

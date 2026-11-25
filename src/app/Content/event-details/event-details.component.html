@@ -16,9 +16,22 @@
 
             <div class="col-md-6">
                 <h2 class="Eventplace"><i class="fa-solid fa-location-dot fa-beat"></i> {{EventDetail?.EventPlace}}</h2>
+                <div class="availability" *ngIf="availability">
+                    <span class="chip" *ngIf="availability.seatLimit !== null" [class.chip-warn]="availability.isFull || (availability.seatsLeft !== null && availability.seatsLeft <= 5)">
+                        <i class="fa-solid fa-chair"></i> {{ availability.registered }} / {{ availability.seatLimit }} seats
+                    </span>
+                    <span class="chip" *ngIf="availability.seatLimit === null">
+                        <i class="fa-solid fa-users"></i> {{ availability.registered }} registered
+                    </span>
+                    <span class="chip" *ngIf="availability.deadline && !availability.deadlinePassed" [class.chip-warn]="availability.closesInDays !== null && availability.closesInDays <= 1">
+                        <i class="fa-regular fa-clock"></i>
+                        {{ availability.closesInDays === 0 ? 'Closes today' : 'Closing in ' + availability.closesInDays + (availability.closesInDays === 1 ? ' day' : ' days') }}
+                    </span>
+                    <span class="chip chip-closed" *ngIf="!availability.isOpen"><i class="fa-solid fa-lock"></i> {{ availability.reason }}</span>
+                </div>
                 <div class="row">
                     <div class="col-md-6 col-12 mb-3">
-                        <button data-bs-toggle="modal" class="button" data-bs-target="#staticBackdrop" >Register</button> 
+                        <button data-bs-toggle="modal" class="button" data-bs-target="#staticBackdrop" [disabled]="availability && !availability.isOpen">{{ availability && !availability.isOpen ? 'Registration Closed' : 'Register' }}</button> 
                     </div>
                     <div class="col-md-6">
 

@@ -38,7 +38,7 @@ export class AdminLoginComponent implements OnInit {
   /** Only same-site paths are allowed as a return target. */
   private targetUrl(): string {
     const r = this.route.snapshot.queryParamMap.get('returnUrl');
-    return r && r.startsWith('/') && !r.startsWith('//') && !r.startsWith('/AdminLogin') ? r : '/EventList';
+    return r && r.startsWith('/') && !r.startsWith('//') && !r.startsWith('/AdminLogin') ? r : '/Dashboard';
   }
 
   isInvalid(name: string): boolean {

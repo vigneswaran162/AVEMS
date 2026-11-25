@@ -117,6 +117,35 @@ ul {
   &:hover { background: var(--c-primary-600); box-shadow: var(--shadow-md); }
 }
 
+
+
+/* ---------- Seats / deadline chips ---------- */
+.availability {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+  margin-bottom: var(--s-3);
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  padding: 0.35rem 0.8rem;
+  border-radius: var(--r-pill);
+  background: var(--c-primary-50);
+  color: var(--c-primary);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  &.chip-warn { background: #fff4e0; color: #b45309; }
+  &.chip-closed { background: var(--c-danger-50); color: #b91c1c; }
+}
+.button:disabled {
+  background: #94a3b8;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
 @media (max-width: 575.98px) {
   .button-1, .button-2 { flex: 1; }
 }

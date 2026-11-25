@@ -1,0 +1,117 @@
+<app-side-nav-link></app-side-nav-link>
+
+<div class="container page-offset">
+
+  <div class="page-header">
+    <div>
+      <h2>Event <span>Check-in</span></h2>
+      <p>Scan a ticket QR code or search a student to mark them present.</p>
+    </div>
+  </div>
+
+  <!-- Event picker -->
+  <div class="panel picker">
+    <label for="ci-event">Event</label>
+    <select id="ci-event" class="form-select" [(ngModel)]="eventNo" (change)="onEventChange()" [disabled]="loadingEvents">
+      <option value="" disabled>{{ loadingEvents ? 'Loading events...' : 'Select an event' }}</option>
+      <option *ngFor="let e of events" [value]="e.EventNo">{{ e.EventTitle }} ({{ e.checkedIn }}/{{ e.registered }})</option>
+    </select>
+  </div>
+
+  <div class="state state-error" *ngIf="loadError">
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    <h6>{{ loadError }}</h6>
+    <button type="button" class="btn btn-primary btn-sm" (click)="eventNo ? loadAttendees() : loadEvents()">Try again</button>
+  </div>
+
+  <div class="state" *ngIf="!eventNo && !loadingEvents && !loadError">
+    <div class="empty-icon" aria-hidden="true"><i class="fa-solid fa-qrcode"></i></div>
+    <h6>Select an event to begin</h6>
+    <p>Pick the event above to see its registrations and start checking people in.</p>
+  </div>
+
+  <ng-container *ngIf="eventNo && !loadError">
+
+    <!-- Attendance counter -->
+    <div class="panel counter">
+      <div class="counts">
+        <div><strong>{{ stats.checkedIn }}</strong><span>Present</span></div>
+        <div><strong>{{ stats.remaining }}</strong><span>Not yet</span></div>
+        <div><strong>{{ stats.registered }}</strong><span>Registered</span></div>
+      </div>
+      <div class="progress-wrap" role="progressbar" [attr.aria-valuenow]="progress" aria-valuemin="0" aria-valuemax="100">
+        <div class="progress-fill" [style.width.%]="progress"></div>
+      </div>
+      <div class="progress-text">{{ progress }}% attendance</div>
+    </div>
+
+    <!-- Scan / search -->
+    <div class="panel scan">
+      <form class="scan-form" (ngSubmit)="submitCode()">
+        <div class="scan-input">
+          <i class="fa-solid fa-ticket"></i>
+          <input type="text" class="form-control" name="code" [(ngModel)]="code" autocomplete="off"
+            placeholder="Scan or type Registration ID, Roll No, phone or email" aria-label="Ticket code">
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="marking || !code.trim()">Check in</button>
+        <button type="button" class="btn btn-secondary" *ngIf="scannerSupported && !scanning" (click)="startScan()">
+          <i class="fa-solid fa-camera"></i> Scan QR
+        </button>
+        <button type="button" class="btn btn-secondary" *ngIf="scanning" (click)="stopScan()">
+          <i class="fa-solid fa-stop"></i> Stop camera
+        </button>
+      </form>
+      <small class="hint" *ngIf="!scannerSupported">Camera scanning needs Chrome or Edge. A USB barcode/QR scanner also works in the box above.</small>
+
+      <div class="camera" *ngIf="scanning">
+        <video #video playsinline muted></video>
+        <span class="frame" aria-hidden="true"></span>
+      </div>
+
+      <div class="result" *ngIf="result" [ngClass]="'res-' + result.type" role="status" aria-live="polite">
+        <i class="fa-solid" [ngClass]="result.type === 'ok' ? 'fa-circle-check' : result.type === 'already' ? 'fa-circle-info' : 'fa-circle-xmark'"></i>
+        <div>
+          <strong>{{ result.text }}</strong>
+          <span *ngIf="result.name"> &mdash; {{ result.name }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Attendee list -->
+    <div class="panel list">
+      <div class="list-tools">
+        <div class="search-box">
+          <i class="fa fa-search" aria-hidden="true"></i>
+          <input type="search" class="form-control" placeholder="Search name, roll no, department..." [(ngModel)]="search" aria-label="Search attendees">
+        </div>
+        <div class="tabs" role="tablist">
+          <button type="button" [class.active]="filter === 'all'" (click)="filter = 'all'">All</button>
+          <button type="button" [class.active]="filter === 'present'" (click)="filter = 'present'">Present</button>
+          <button type="button" [class.active]="filter === 'absent'" (click)="filter = 'absent'">Not yet</button>
+        </div>
+      </div>
+
+      <div class="state" *ngIf="loadingList" role="status"><div class="spinner" aria-hidden="true"></div></div>
+
+      <div class="empty" *ngIf="!loadingList && filtered.length === 0">
+        {{ attendees.length === 0 ? 'No registrations for this event yet.' : 'No students match this filter.' }}
+      </div>
+
+      <ul class="people" *ngIf="!loadingList && filtered.length > 0">
+        <li *ngFor="let a of filtered" [class.is-present]="a.CheckedIn">
+          <div class="avatar" aria-hidden="true">{{ (a.FullName || '?').charAt(0) }}</div>
+          <div class="info">
+            <div class="name">{{ a.FullName }}</div>
+            <div class="sub">{{ a.RollNo }} <span *ngIf="a.Department">&middot; {{ a.Department }}</span> <span *ngIf="a.RegisterationID">&middot; {{ a.RegisterationID }}</span></div>
+          </div>
+          <div class="status" *ngIf="a.CheckedIn">
+            <span class="badge-ok"><i class="fa-solid fa-check"></i> Present</span>
+            <small *ngIf="a.CheckedInAt">{{ a.CheckedInAt | date:'hh:mm a' }}</small>
+          </div>
+          <button type="button" class="btn btn-sm btn-primary" *ngIf="!a.CheckedIn" (click)="checkIn(a)" [disabled]="marking">Check in</button>
+          <button type="button" class="btn btn-sm btn-secondary" *ngIf="a.CheckedIn" (click)="undo(a)">Undo</button>
+        </li>
+      </ul>
+    </div>
+  </ng-container>
+</div>

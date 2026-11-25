@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { RegisterationModel } from '../../Models/RegisterationEventModel';
 import { ToastNofificationService } from '../../Services/toast-nofification.service';
 import { RegisterationEventService } from '../../Services/registeration-event.service';
+import { Availability, EventOpsService } from '../../Services/event-ops.service';
 import Swal from 'sweetalert2';
 import { AnyARecord } from 'node:dns';
 
@@ -19,19 +20,24 @@ export class EventDetailsComponent implements OnInit {
  Title=''
  RegisterationDetail:any;
  isLoading:boolean =false
+ availability: Availability | null = null;
+ private eventNo = '';
 
  constructor(
   private service:AddEventService,
   private Register:RegisterationEventService,
   private route: ActivatedRoute,
   private router:Router,
-  private Toast:ToastNofificationService){}
+  private Toast:ToastNofificationService,
+  private ops:EventOpsService){}
  ngOnInit(): void {
 
   this.model = new RegisterationModel();
   const param = this.route.snapshot.paramMap.get('id');
   if (param != "0" && param != null && param != undefined) {
     this.model.EventNo = param;
+    this.eventNo = param;
+    this.loadAvailability();
     console.log(this.model.EventNo,'hello')
     this.getById(param);
   }
@@ -158,6 +164,8 @@ export class EventDetailsComponent implements OnInit {
           }
         })
         this.model = new RegisterationModel();
+        this.model.EventNo = this.eventNo;
+        this.loadAvailability();
         this.isLoading = false
 
      
@@ -171,6 +179,17 @@ export class EventDetailsComponent implements OnInit {
   }
     onClear(){
       this.model = new RegisterationModel();
+      this.model.EventNo = this.eventNo;
+    }
+
+    /** Seats left / deadline shown on the page (counts only, no personal data). */
+    async loadAvailability(){
+      if (!this.eventNo) { return; }
+      try {
+        this.availability = await this.ops.getAvailability(this.eventNo);
+      } catch {
+        this.availability = null;
+      }
     }
 
 

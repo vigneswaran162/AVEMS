@@ -1,0 +1,116 @@
+<app-side-nav-link></app-side-nav-link>
+
+<div class="container page-offset">
+
+  <div class="page-header">
+    <div>
+      <h2>Admin <span>Dashboard</span></h2>
+      <p>Events, registrations and attendance at a glance.</p>
+    </div>
+    <button type="button" class="btn btn-secondary" (click)="load()" [disabled]="isLoading">
+      <i class="fa-solid fa-rotate" [class.fa-spin]="isLoading"></i> Refresh
+    </button>
+  </div>
+
+  <!-- Loading -->
+  <div class="state" *ngIf="isLoading && !data" role="status">
+    <div class="spinner" aria-hidden="true"></div>
+    <p>Loading dashboard...</p>
+  </div>
+
+  <!-- Error -->
+  <div class="state state-error" *ngIf="!isLoading && loadError">
+    <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
+    <h6>{{ loadError }}</h6>
+    <button type="button" class="btn btn-primary btn-sm" (click)="load()">Try again</button>
+  </div>
+
+  <ng-container *ngIf="data">
+    <!-- Stat cards -->
+    <div class="stats anim-stagger">
+      <div class="stat">
+        <span class="stat-icon blue"><i class="fa-solid fa-calendar-days"></i></span>
+        <div><div class="stat-value">{{ data.totals.events }}</div><div class="stat-label">Total events</div></div>
+      </div>
+      <div class="stat">
+        <span class="stat-icon teal"><i class="fa-solid fa-hourglass-half"></i></span>
+        <div><div class="stat-value">{{ data.totals.upcoming }}</div><div class="stat-label">Upcoming &middot; {{ data.totals.current }} current &middot; {{ data.totals.closed }} closed</div></div>
+      </div>
+      <div class="stat">
+        <span class="stat-icon green"><i class="fa-solid fa-user-plus"></i></span>
+        <div><div class="stat-value">{{ data.totals.registrations }}</div><div class="stat-label">Registrations</div></div>
+      </div>
+      <div class="stat">
+        <span class="stat-icon amber"><i class="fa-solid fa-user-check"></i></span>
+        <div>
+          <div class="stat-value">{{ data.totals.checkedIn }} <small>({{ attendanceRate }}%)</small></div>
+          <div class="stat-label">Checked in</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <!-- Registrations per event -->
+      <section class="panel">
+        <h3>Registrations <span>per event</span></h3>
+        <div class="empty" *ngIf="data.perEvent.length === 0">No events yet.</div>
+        <ul class="bars" *ngIf="data.perEvent.length > 0">
+          <li *ngFor="let e of data.perEvent">
+            <div class="bar-head">
+              <span class="bar-title" [title]="e.EventTitle">{{ e.EventTitle }}</span>
+              <span class="bar-count">{{ e.registered }}<ng-container *ngIf="e.seatLimit"> / {{ e.seatLimit }}</ng-container></span>
+            </div>
+            <div class="track"><div class="fill" [style.width.%]="barWidth(e.registered)"></div></div>
+            <div class="bar-sub">{{ e.checkedIn }} checked in</div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Department breakdown -->
+      <section class="panel">
+        <h3>Department <span>breakdown</span></h3>
+        <div class="empty" *ngIf="data.departments.length === 0">No registrations yet.</div>
+        <div class="dept" *ngIf="data.departments.length > 0">
+          <div class="donut" [style.background]="donut" role="img" aria-label="Registrations by department">
+            <div class="donut-hole"><strong>{{ totalDeptCount }}</strong><span>total</span></div>
+          </div>
+          <ul class="legend">
+            <li *ngFor="let d of data.departments; let i = index">
+              <span class="dot" [style.background]="color(i)"></span>
+              <span class="legend-name">{{ d.department }}</span>
+              <span class="legend-val">{{ d.count }} &middot; {{ percent(d.count) }}%</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+
+    <!-- Upcoming events -->
+    <section class="panel">
+      <h3>Upcoming <span>events</span></h3>
+      <div class="empty" *ngIf="data.upcomingEvents.length === 0">No upcoming events.</div>
+      <div class="upcoming" *ngIf="data.upcomingEvents.length > 0">
+        <article class="up-card" *ngFor="let u of data.upcomingEvents">
+          <div class="up-top">
+            <h4>{{ u.EventTitle }}</h4>
+            <span class="pill" [class.pill-closed]="!u.isOpen">{{ u.isOpen ? 'Open' : 'Closed' }}</span>
+          </div>
+          <div class="up-meta">
+            <span><i class="fa-regular fa-calendar"></i> {{ u.EventDate | date:'dd-MM-yyyy' }}</span>
+            <span *ngIf="u.EventPlace"><i class="fa-solid fa-location-dot"></i> {{ u.EventPlace }}</span>
+          </div>
+          <div class="up-foot">
+            <span class="chip"><i class="fa-solid fa-chair"></i>
+              <ng-container *ngIf="u.seatLimit !== null">{{ u.registered }} / {{ u.seatLimit }} seats</ng-container>
+              <ng-container *ngIf="u.seatLimit === null">{{ u.registered }} registered</ng-container>
+            </span>
+            <span class="chip chip-soft"><i class="fa-regular fa-clock"></i> {{ closesText(u.closesInDays) }}</span>
+          </div>
+          <button type="button" class="btn btn-secondary btn-sm" (click)="openCheckIn(u.EventNo)">
+            <i class="fa-solid fa-qrcode"></i> Check-in
+          </button>
+        </article>
+      </div>
+    </section>
+  </ng-container>
+</div>

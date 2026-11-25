@@ -11,6 +11,14 @@ export class SideNavLinkComponent {
 
   constructor (private route:ActivatedRoute,private router:Router,private auth:AuthService){}
 
+  Dashboard(){
+    this.router.navigate(['/Dashboard'], { relativeTo: this.route });
+  }
+
+  CheckIn(){
+    this.router.navigate(['/CheckIn'], { relativeTo: this.route });
+  }
+
   logout(){
     this.auth.logout();
   }

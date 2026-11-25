@@ -38,6 +38,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AnnouncementComponent } from './Admin/announcement/announcement.component';
 import { AdminLoginComponent } from './Admin/admin-login/admin-login.component';
+import { DashboardComponent } from './Admin/dashboard/dashboard.component';
+import { CheckinComponent } from './Admin/checkin/checkin.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +60,9 @@ import { AdminLoginComponent } from './Admin/admin-login/admin-login.component';
     RegisterstiondataComponent,
     EventUploadComponent,
     AnnouncementComponent,
-    AdminLoginComponent
+    AdminLoginComponent,
+    DashboardComponent,
+    CheckinComponent
   ],
   imports: [
     BrowserModule,
