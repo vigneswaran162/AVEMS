@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
+import { API_BASE } from '../api.config';
 import {
   AnnouncementListResponse,
   AnnouncementResponse,
@@ -12,7 +13,7 @@ import {
 })
 export class AnnouncementService {
   // Same backend host as AddEventService
-  private readonly apiurl: string = 'http://localhost:8000/api/events';
+  private readonly apiurl: string = API_BASE + 'api/events';
 
   constructor(private http: HttpClient) {}
 

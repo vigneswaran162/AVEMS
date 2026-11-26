@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
+import { API_BASE } from '../api.config';
 
 export interface Availability {
   EventNo: string;
@@ -57,7 +58,7 @@ export interface DashboardData {
   providedIn: 'root'
 })
 export class EventOpsService {
-  private readonly base: string = 'http://localhost:8000/api/';
+  private readonly base: string = API_BASE + 'api/';
 
   constructor(private http: HttpClient) {}
 

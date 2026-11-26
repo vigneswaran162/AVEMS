@@ -1,5 +1,6 @@
 import { Injectable  } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { API_BASE } from '../api.config';
 
 @Injectable({
   providedIn: 'root'
@@ -7,8 +8,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class AddEventService {
   private APIUrl: string;
 
-  // private apiurl:string = 'https://backendvercel-brown.vercel.app/'
-  private apiurl:string = 'http://localhost:8000/'
+  private apiurl:string = API_BASE
 
   constructor(private http:HttpClient) { }
 
@@ -22,7 +22,6 @@ async GetAll(): Promise<any> {
 }
 async GetById(id:any): Promise<any> {
 this.APIUrl = this.apiurl+'EventsGetById?EventNo='+id;
-// this.APIUrl = 'http://localhost:8000/EventsGetById?EventNo='+id;
 let res = await this.http.get(this.APIUrl).toPromise()
 return res
 }
@@ -34,13 +33,11 @@ if (entity.OpsType == "S") {
 else if (entity.OpsType == "U") {
   this.APIUrl = this.apiurl+'UpdateEvent';
 
-  // this.APIUrl = 'http://localhost:8000/UpdateEvent';
 }
 else if (entity.OpsType == "V") {
   // this.APIUrl = 'http://localhost:3000/api/AddEvents/Delete';
   this.APIUrl = this.apiurl+'UpdateEvent';
 
-  // this.APIUrl = 'http://localhost:8000/UpdateEvent';
 
 }
 let headers = new HttpHeaders({
@@ -69,7 +66,6 @@ async CREATEFOLDER (entity:any): Promise<any> {
 
     this.APIUrl = this.apiurl+'AddFolder';
   
-    // this.APIUrl = 'http://localhost:8000/AddFolder';
   
 
   let headers = new HttpHeaders({

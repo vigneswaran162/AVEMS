@@ -3,6 +3,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
+import { API_BASE } from '../api.config';
 
 export interface AdminLoginResponse {
   success: boolean;
@@ -15,7 +16,7 @@ export interface AdminLoginResponse {
 })
 export class AuthService {
   // Backend host (same as the other services)
-  readonly apiOrigin: string = 'http://localhost:8000/';
+  readonly apiOrigin: string = API_BASE;
   private readonly loginUrl: string = this.apiOrigin + 'api/admin/login';
   private readonly TOKEN_KEY = 'avems_admin_token';
   private readonly USER_KEY = 'avems_admin_user';

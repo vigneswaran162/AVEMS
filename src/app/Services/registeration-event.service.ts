@@ -1,5 +1,6 @@
 import { Injectable  } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { API_BASE } from '../api.config';
 
 @Injectable({
   providedIn: 'root'
@@ -8,8 +9,7 @@ export class RegisterationEventService {
 
   private APIUrl: string;
 
-  // private apiurl:string = 'https://backendvercel-brown.vercel.app/'
-   private apiurl:string = 'http://localhost:8000/'
+  private apiurl:string = API_BASE
 
 
 
@@ -31,7 +31,6 @@ export class RegisterationEventService {
   async CRUD(entity:any): Promise<any> {
   if (entity.OpsType == "S") {
     this.APIUrl = this.apiurl+'RegisterEvent';
-    // this.APIUrl = 'http://localhost:8000/RegisterEvent'
   }
   else if (entity.OpsType == "U") {
     this.APIUrl = 'http://localhost:3000/api/RegisterationEvent/Update';
